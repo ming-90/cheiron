@@ -413,25 +413,106 @@ function timeSeriesOption(visualization) {
   return option;
 }
 
+/** Keep dense networks readable while preserving the complete backend JSON. */
+function readableNetwork(graph, maxNodes = 50, maxEdges = 90) {
+  const nodes = graph.nodes || [];
+  const edges = graph.edges || [];
+  if (nodes.length <= maxNodes && edges.length <= maxEdges) {
+    return { nodes, edges, truncated: false };
+  }
+  const scores = new Map(nodes.map((node) => [node.id, 0]));
+  edges.forEach((edge) => {
+    const weight = Number(edge.weight || 1);
+    scores.set(edge.source, (scores.get(edge.source) || 0) + weight);
+    scores.set(edge.target, (scores.get(edge.target) || 0) + weight);
+  });
+  const groups = [...new Set(nodes.map((node) => node.group))];
+  const selected = new Set();
+  groups.forEach((group) => {
+    const groupNodes = nodes
+      .filter((node) => node.group === group)
+      .sort((a, b) => (scores.get(b.id) || 0) - (scores.get(a.id) || 0));
+    const quota = Math.max(1, Math.floor(maxNodes / groups.length));
+    groupNodes.slice(0, quota).forEach((node) => selected.add(node.id));
+  });
+  const visibleEdges = edges
+    .filter((edge) => selected.has(edge.source) && selected.has(edge.target))
+    .sort((a, b) => Number(b.weight || 0) - Number(a.weight || 0))
+    .slice(0, maxEdges);
+  const connected = new Set(visibleEdges.flatMap((edge) => [edge.source, edge.target]));
+  return {
+    nodes: nodes.filter((node) => connected.has(node.id)),
+    edges: visibleEdges,
+    truncated: true
+  };
+}
+
+/** Detect sponsor–intervention style networks that benefit from two columns. */
+function isBipartiteNetwork(nodes, edges) {
+  const groupById = new Map(nodes.map((node) => [node.id, node.group]));
+  const groups = [...new Set(nodes.map((node) => node.group))];
+  return groups.length === 2 && edges.every((edge) => groupById.get(edge.source) !== groupById.get(edge.target));
+}
+
+/** Position two entity groups in opposing columns instead of a circular ring. */
+function bipartiteNodes(nodes) {
+  const groups = [...new Set(nodes.map((node) => node.group))];
+  const byGroup = new Map(groups.map((group) => [
+    group,
+    nodes
+      .filter((node) => node.group === group)
+      .sort((a, b) => Number(b.trial_count || 0) - Number(a.trial_count || 0))
+  ]));
+  return nodes.map((node) => {
+    const groupIndex = groups.indexOf(node.group);
+    const siblings = byGroup.get(node.group) || [];
+    const row = siblings.findIndex((item) => item.id === node.id);
+    return {
+      ...node,
+      x: groupIndex === 0 ? 80 : 920,
+      y: 40 + ((row + 1) / (siblings.length + 1)) * 920,
+      label: {
+        show: row < 10,
+        position: groupIndex === 0 ? "left" : "right",
+        align: groupIndex === 0 ? "right" : "left"
+      }
+    };
+  });
+}
+
 /** Translate backend nodes and edges into an interactive ECharts graph. */
 function networkOption(visualization) {
-  const graph = visualization.data?.[0] || { nodes: [], edges: [] };
-  const showAllLabels = graph.nodes.length <= 30;
+  const original = visualization.data?.[0] || { nodes: [], edges: [] };
+  const graph = readableNetwork(original);
+  const bipartite = isBipartiteNetwork(graph.nodes, graph.edges);
+  const displayNodes = bipartite ? bipartiteNodes(graph.nodes) : graph.nodes;
+  const showAllLabels = displayNodes.length <= 26;
   const option = baseChartOption();
   option.tooltip.formatter = (params) => params.dataType === "edge"
     ? `${escapeHtml(params.data.source)} ↔ ${escapeHtml(params.data.target)}<br><b>${Number(params.data.value || 0).toLocaleString()} studies</b>`
     : `${escapeHtml(params.data.name)}<br><b>${Number(params.data.value || 0).toLocaleString()} studies</b>`;
-  option.legend = [{ data: [...new Set(graph.nodes.map((node) => node.group))], bottom: 0 }];
+  option.legend = [{ data: [...new Set(displayNodes.map((node) => node.group))], bottom: 0 }];
+  if (graph.truncated) {
+    option.graphic = [{
+      type: "text", right: 12, top: 8,
+      style: {
+        text: `가독성을 위해 주요 관계 ${graph.edges.length}개 표시 · 전체 데이터는 JSON에 유지`,
+        fill: "#6b7770", font: "10px Manrope, sans-serif"
+      }
+    }];
+  }
   option.series = [{
     type: "graph",
-    layout: "circular",
-    left: 135,
-    right: 150,
-    top: 60,
-    bottom: 90,
+    layout: bipartite ? "none" : "force",
+    left: bipartite ? 170 : 85,
+    right: bipartite ? 170 : 85,
+    top: 45,
+    bottom: 70,
     roam: true,
     draggable: true,
-    circular: { rotateLabel: false },
+    force: bipartite ? undefined : {
+      initLayout: "none", repulsion: [180, 520], edgeLength: [75, 190], gravity: .08, friction: .62
+    },
     label: {
       show: showAllLabels, position: "right", distance: 6, formatter: "{b}", fontSize: 9,
       width: 120, overflow: "truncate", color: "#435249"
@@ -442,17 +523,17 @@ function networkOption(visualization) {
       label: { show: true, fontSize: 11, fontWeight: 600 },
       lineStyle: { width: 5, opacity: .8 }
     },
-    categories: [...new Set(graph.nodes.map((node) => node.group))].map((name) => ({ name })),
-    data: graph.nodes.map((node) => ({
+    categories: [...new Set(displayNodes.map((node) => node.group))].map((name) => ({ name })),
+    data: displayNodes.map((node) => ({
       id: node.id, name: node.id, value: node.trial_count,
       symbolSize: Math.min(28, 9 + Math.sqrt(Number(node.trial_count || 1)) * 2),
-      category: node.group
+      category: node.group, x: node.x, y: node.y, label: node.label
     })),
     links: graph.edges.map((edge) => ({
       source: edge.source, target: edge.target, value: edge.weight,
       citations: edge.citations || [], lineStyle: {
         width: Math.min(8, 1 + Math.sqrt(Number(edge.weight || 1))),
-        opacity: .38, curveness: .08
+        opacity: .3, curveness: bipartite ? .06 : .12
       }
     }))
   }];
