@@ -1,6 +1,5 @@
 # Cheiron — ClinicalTrials.gov Query-to-Visualization Agent
 
-Cheiron is an AI-enabled service that turns natural-language clinical-trial questions into frontend-renderable visualization JSON backed by live [ClinicalTrials.gov Data API](https://clinicaltrials.gov/data-api/api) records.
 
 The system uses an LLM for constrained planning and visualization design. It does **not** ask the LLM to search records, calculate statistics, or invent chart data. API compilation, pagination, normalization, filtering, distinct-NCT aggregation, citations, and output validation are implemented in deterministic Python code.
 

@@ -1,6 +1,5 @@
 # Cheiron — ClinicalTrials.gov 질의-시각화 에이전트
 
-Cheiron은 자연어로 입력한 임상시험 질문을 실제 [ClinicalTrials.gov Data API](https://clinicaltrials.gov/data-api/api) 데이터에 근거한 프론트엔드 렌더링용 시각화 JSON으로 변환하는 AI 에이전트입니다.
 
 LLM은 제한된 분석 계획과 시각화 설계에만 사용합니다. 연구 검색, 통계 계산 또는 차트 데이터 생성을 LLM에 맡기지 않습니다. API 요청 컴파일, 페이지네이션, 정규화, 필터링, 고유 NCT 집계, 인용 연결 및 출력 검증은 결정론적인 Python 코드가 수행합니다.
 
