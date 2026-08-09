@@ -1,0 +1,1624 @@
+{
+  "query": "유방암 임상시험이 많은 국가 상위 10개를 보여줘.",
+  "plan": {
+    "filters": {
+      "condition": "Breast Cancer",
+      "interventions": [],
+      "sponsor": null,
+      "country": null,
+      "overall_statuses": [],
+      "phases": [],
+      "study_types": [],
+      "start_year": null,
+      "end_year": null
+    },
+    "analyses": [
+      {
+        "id": "top_countries_breast_cancer",
+        "type": "ranking",
+        "group_by": [
+          "country"
+        ],
+        "limit": 10,
+        "minimum_weight": 1
+      }
+    ],
+    "assumptions": [
+      "Condition normalized to 'Breast Cancer' for ClinicalTrials.gov search.",
+      "Includes all study types and overall statuses; records missing country are excluded from the ranking."
+    ]
+  },
+  "visualizations": [
+    {
+      "id": "top_countries_breast_cancer",
+      "type": "horizontal_bar_chart",
+      "title": "유방암 임상시험 상위 10개국",
+      "encoding": {
+        "x": {
+          "field": "trial_count",
+          "type": "quantitative",
+          "axis": {
+            "title": "임상시험 수"
+          }
+        },
+        "y": {
+          "field": "country",
+          "type": "ordinal",
+          "axis": {
+            "title": ""
+          },
+          "sort": "-x"
+        },
+        "tooltip": [
+          {
+            "field": "country",
+            "type": "nominal"
+          },
+          {
+            "field": "trial_count",
+            "type": "quantitative"
+          }
+        ]
+      },
+      "data": [
+        {
+          "country": "United States",
+          "trial_count": 7017,
+          "citations": [
+            {
+              "nct_id": "NCT00001193",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "United States",
+              "source_url": "https://clinicaltrials.gov/study/NCT00001193",
+              "title": "A Multimodality Treatment Approach to Patients With Inflammatory Cancer of the Breast and Locally Advanced Non-Inflammatory Stage III Breast Cancer and Stage IV Breast Cancer"
+            },
+            {
+              "nct_id": "NCT00001239",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "United States",
+              "source_url": "https://clinicaltrials.gov/study/NCT00001239",
+              "title": "Combination Chemotherapy (FLAC) Combined With Granulocyte-Macrophage Colony Stimulating Factor in Locally Advanced and Metastatic Breast Cancer"
+            },
+            {
+              "nct_id": "NCT00001250",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "United States",
+              "source_url": "https://clinicaltrials.gov/study/NCT00001250",
+              "title": "Effect of Preoperative Chemotherapy on Axillary Lymph Node Metastases in Stage II Breast Cancer: A Prospective Randomized Trial"
+            },
+            {
+              "nct_id": "NCT00001269",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "United States",
+              "source_url": "https://clinicaltrials.gov/study/NCT00001269",
+              "title": "Phase I Trial of FLAC (5-Fluorouracil, Leucovorin, Adriamycin, Cytoxan) Plus GM-CSF (Granulocyte-Macrophage Colony Stimulating Factor) Plus Dose Escalation of IL-3 (Interleukin-3) in Metastatic Breast Cancer"
+            },
+            {
+              "nct_id": "NCT00001270",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "United States",
+              "source_url": "https://clinicaltrials.gov/study/NCT00001270",
+              "title": "Feasibility Study of Interleukin 1-Alpha With Ifosfamide, CBDCA, and Etoposide With Autologous Bone Marrow Transplant in Metastatic Carcinoma and Lymphoma"
+            },
+            {
+              "nct_id": "NCT00001302",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "United States",
+              "source_url": "https://clinicaltrials.gov/study/NCT00001302",
+              "title": "A Phase I Study of Infusional Chemotherapy With the P-Glycoprotein Antagonist PSC 833"
+            },
+            {
+              "nct_id": "NCT00001338",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "United States",
+              "source_url": "https://clinicaltrials.gov/study/NCT00001338",
+              "title": "A Prospective, Randomized, Phase III Trial of FLAC (5-Fluorouracil, Leucovorin, Adriamycin, Cytoxan) Chemotherapy With GM-CSF (Granulocyte-Macrophage Colony-Stimulating Factor) Versus PIXY 321 in Advanced Breast Cancer"
+            },
+            {
+              "nct_id": "NCT00001378",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "United States",
+              "source_url": "https://clinicaltrials.gov/study/NCT00001378",
+              "title": "A Pilot Trial of Tamoxifen and 4-HPR (4-N-Hydroxyphenyl Retinamide) in Persons at High Risk for Developing Breast Cancer"
+            },
+            {
+              "nct_id": "NCT00001383",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "United States",
+              "source_url": "https://clinicaltrials.gov/study/NCT00001383",
+              "title": "A Phase I Study of Infusional Paclitaxel With the P-Glycoprotein Antagonist PSC 833"
+            },
+            {
+              "nct_id": "NCT00001384",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "United States",
+              "source_url": "https://clinicaltrials.gov/study/NCT00001384",
+              "title": "A Pilot Trial of AC (Adriamycin, Cyclophosphamide) Chemotherapy With G-CSF (Granulocyte Colony-Stimulating Factor) Followed by Infusional Taxol (Paclitaxel) as Adjuvant Treatment for High Risk Stage II and Stage III Breast Cancer Patients"
+            },
+            {
+              "nct_id": "NCT00001385",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "United States",
+              "source_url": "https://clinicaltrials.gov/study/NCT00001385",
+              "title": "Positron Emission Tomography in Patients With Breast Cancer"
+            },
+            {
+              "nct_id": "NCT00001440",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "United States",
+              "source_url": "https://clinicaltrials.gov/study/NCT00001440",
+              "title": "Autologous T-Cell Transplantation and the Immunotherapy of Residual Disease in Breast Cancer: Pilot Study of Vaccine-Driven T-Cell Expansion in Patients Treated With Dose-Intensive Chemotherapy"
+            },
+            {
+              "nct_id": "NCT00001444",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "United States",
+              "source_url": "https://clinicaltrials.gov/study/NCT00001444",
+              "title": "A Phase I Trial of Continuous Infusion UCN-01 in Patients With Refractory Neoplasms"
+            },
+            {
+              "nct_id": "NCT00001468",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "United States",
+              "source_url": "https://clinicaltrials.gov/study/NCT00001468",
+              "title": "Outcomes of Education and Counseling for BRCA1 Testing"
+            },
+            {
+              "nct_id": "NCT00001493",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "United States",
+              "source_url": "https://clinicaltrials.gov/study/NCT00001493",
+              "title": "Antimetabolite Induction, High-Dose Alkylating Agent Consolidation and Retroviral Transduction of the MDR1 Gene Into Peripheral Blood Progenitor Cells Followed by Intensification Therapy With Sequential Paclitaxel and Doxorubicin for Stage 4 Breast Cancer"
+            },
+            {
+              "nct_id": "NCT00001496",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "United States",
+              "source_url": "https://clinicaltrials.gov/study/NCT00001496",
+              "title": "Establishment of Normal Breast Epithelial Cell Lines From Patients at High Risk for Breast Cancer"
+            },
+            {
+              "nct_id": "NCT00001498",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "United States",
+              "source_url": "https://clinicaltrials.gov/study/NCT00001498",
+              "title": "A Pilot Trial of Sequential Chemotherapy With Antimetabolite Induction, High-Dose Alkylating Agent Consolidation With Peripheral Blood Progenitor Cell Support, and Intensification With Paclitaxel and Doxorubicin for Patients With High-Risk Breast Cancer"
+            },
+            {
+              "nct_id": "NCT00001503",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "United States",
+              "source_url": "https://clinicaltrials.gov/study/NCT00001503",
+              "title": "Follow-up Protocol for Patients With Cancer/AIDS/Skin Disease"
+            },
+            {
+              "nct_id": "NCT00001504",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "United States",
+              "source_url": "https://clinicaltrials.gov/study/NCT00001504",
+              "title": "A Phase I Trial of Tamoxifen and 9-Cis-Retinoic Acid in Breast Cancer Patients"
+            },
+            {
+              "nct_id": "NCT00001507",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "United States",
+              "source_url": "https://clinicaltrials.gov/study/NCT00001507",
+              "title": "Chemotherapy and Progenitor Cell Transplantation to Treat Inflammatory Breast Cancer"
+            }
+          ]
+        },
+        {
+          "country": "China",
+          "trial_count": 2163,
+          "citations": [
+            {
+              "nct_id": "NCT00022672",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "China",
+              "source_url": "https://clinicaltrials.gov/study/NCT00022672",
+              "title": "A Study to Evaluate the Efficacy and Safety of Herceptin® (Trastuzumab) in Combination With Arimidex® (Anastrozole) an Aromatase Inhibitor Compared to Arimidex® Alone in Patients With Metastatic Breast Cancer"
+            },
+            {
+              "nct_id": "NCT00045032",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "China",
+              "source_url": "https://clinicaltrials.gov/study/NCT00045032",
+              "title": "Herceptin (Trastuzumab) in Treating Women With Human Epidermal Growth Factor Receptor (HER) 2-Positive Primary Breast Cancer"
+            },
+            {
+              "nct_id": "NCT00077857",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "China",
+              "source_url": "https://clinicaltrials.gov/study/NCT00077857",
+              "title": "A Study to Assess Capecitabine (Xeloda®) in Patients With Locally Advanced or Metastatic Breast Cancer"
+            },
+            {
+              "nct_id": "NCT00080301",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "China",
+              "source_url": "https://clinicaltrials.gov/study/NCT00080301",
+              "title": "Novel Epothilone Plus Capecitabine Versus Capecitabine Alone in Patients With Advanced Breast Cancer"
+            },
+            {
+              "nct_id": "NCT00082433",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "China",
+              "source_url": "https://clinicaltrials.gov/study/NCT00082433",
+              "title": "Epothilone (Ixabepilone) Plus Capecitabine Versus Capecitabine Alone in Patients With Advanced Breast Cancer"
+            },
+            {
+              "nct_id": "NCT00171340",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "China",
+              "source_url": "https://clinicaltrials.gov/study/NCT00171340",
+              "title": "Zoledronic Acid in the Prevention of Cancer Treatment Related Bone Loss in Postmenopausal Women Receiving Letrozole for Breast Cancer."
+            },
+            {
+              "nct_id": "NCT00191854",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "China",
+              "source_url": "https://clinicaltrials.gov/study/NCT00191854",
+              "title": "Gemcitabine Combinations in Metastatic Breast Cancer (MBC), 1st Line"
+            },
+            {
+              "nct_id": "NCT00248170",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "China",
+              "source_url": "https://clinicaltrials.gov/study/NCT00248170",
+              "title": "Comparison Trial of Letrozole to Anastrozole in the Adjuvant Treatment of Postmenopausal Women With Hormone Receptor and Node Positive Breast Cancer"
+            },
+            {
+              "nct_id": "NCT00281658",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "China",
+              "source_url": "https://clinicaltrials.gov/study/NCT00281658",
+              "title": "Study In Women And Men With Metastatic Breast Cancer That Have Overexpression Of ErbB2"
+            },
+            {
+              "nct_id": "NCT00293540",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "China",
+              "source_url": "https://clinicaltrials.gov/study/NCT00293540",
+              "title": "Luteal vs Follicular Surgical Oophorectomy and Tamoxifen in Premenopausal Women With Metastatic Hormone Receptor Positive Breast Cancer"
+            },
+            {
+              "nct_id": "NCT00300781",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "China",
+              "source_url": "https://clinicaltrials.gov/study/NCT00300781",
+              "title": "Study Evaluating HKI-272 (Neratinib) In Subjects With Advanced Breast Cancer"
+            },
+            {
+              "nct_id": "NCT00312208",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "China",
+              "source_url": "https://clinicaltrials.gov/study/NCT00312208",
+              "title": "Docetaxel in Breast Cancer"
+            },
+            {
+              "nct_id": "NCT00316199",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "China",
+              "source_url": "https://clinicaltrials.gov/study/NCT00316199",
+              "title": "Efficacy Study of Gemcitabine-Paclitaxel to Treat Metastatic Breast Cancer"
+            },
+            {
+              "nct_id": "NCT00327769",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "China",
+              "source_url": "https://clinicaltrials.gov/study/NCT00327769",
+              "title": "Faslodex Advanced Breast Cancer Local Chinese Study"
+            },
+            {
+              "nct_id": "NCT00333775",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "China",
+              "source_url": "https://clinicaltrials.gov/study/NCT00333775",
+              "title": "A Study of Bevacizumab (Avastin) in Women With HER2 Negative Metastatic Breast Cancer"
+            },
+            {
+              "nct_id": "NCT00338247",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "China",
+              "source_url": "https://clinicaltrials.gov/study/NCT00338247",
+              "title": "EAP (Expanded Access Protocol) Of Lapatinib Combined With Capecitabine In Metastatic Breast Cancer"
+            },
+            {
+              "nct_id": "NCT00342004",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "China",
+              "source_url": "https://clinicaltrials.gov/study/NCT00342004",
+              "title": "A Prospective Cohort Study of Occupational Exposures and Cancer Risk Among Women"
+            },
+            {
+              "nct_id": "NCT00374322",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "China",
+              "source_url": "https://clinicaltrials.gov/study/NCT00374322",
+              "title": "Tykerb Evaluation After Chemotherapy (TEACH): Lapatinib Versus Placebo In Women With Early-Stage Breast Cancer"
+            },
+            {
+              "nct_id": "NCT00398567",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "China",
+              "source_url": "https://clinicaltrials.gov/study/NCT00398567",
+              "title": "A Phase 1/2 Study Of HKI-272 (Neratinib) in Combination With Trastuzumab (Herceptin) In Subjects With Advanced Breast Cancer"
+            },
+            {
+              "nct_id": "NCT00418457",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "China",
+              "source_url": "https://clinicaltrials.gov/study/NCT00418457",
+              "title": "Regional Anesthesia and Breast Cancer Recurrence"
+            }
+          ]
+        },
+        {
+          "country": "France",
+          "trial_count": 1376,
+          "citations": [
+            {
+              "nct_id": "NCT00002777",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "France",
+              "source_url": "https://clinicaltrials.gov/study/NCT00002777",
+              "title": "Exemestane Compared With Tamoxifen in Treating Women With Locally Recurrent or Metastatic Breast Cancer"
+            },
+            {
+              "nct_id": "NCT00002851",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "France",
+              "source_url": "https://clinicaltrials.gov/study/NCT00002851",
+              "title": "Lymph Node Radiation Therapy in Patients With Stage I, Stage II, or Stage III Breast Cancer That Has Been Surgically Removed"
+            },
+            {
+              "nct_id": "NCT00002870",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "France",
+              "source_url": "https://clinicaltrials.gov/study/NCT00002870",
+              "title": "High Dose Chemotherapy Plus Peripheral Stem Cell Transplantation Compared With Standard Therapy in Treating Women With Locally Recurrent or Metastatic Breast Cancer"
+            },
+            {
+              "nct_id": "NCT00003418",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "France",
+              "source_url": "https://clinicaltrials.gov/study/NCT00003418",
+              "title": "Exemestane Compared With Tamoxifen in Treating Postmenopausal Women With Primary Breast Cancer"
+            },
+            {
+              "nct_id": "NCT00003654",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "France",
+              "source_url": "https://clinicaltrials.gov/study/NCT00003654",
+              "title": "Diagnostic Study to Identify Sentinel Lymph Nodes in Women With Stage I or Stage II Breast Cancer"
+            },
+            {
+              "nct_id": "NCT00003730",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "France",
+              "source_url": "https://clinicaltrials.gov/study/NCT00003730",
+              "title": "Vinorelbine Plus Fluorouracil in Treating Women With Metastatic Breast Cancer"
+            },
+            {
+              "nct_id": "NCT00003938",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "France",
+              "source_url": "https://clinicaltrials.gov/study/NCT00003938",
+              "title": "Liposomal Amphotericin B in Treating Granulocytopenia and Persistent Unexplained Fever in Cancer Patients"
+            },
+            {
+              "nct_id": "NCT00004205",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "France",
+              "source_url": "https://clinicaltrials.gov/study/NCT00004205",
+              "title": "Letrozole or Tamoxifen in Treating Postmenopausal Women With Breast Cancer"
+            },
+            {
+              "nct_id": "NCT00005980",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "France",
+              "source_url": "https://clinicaltrials.gov/study/NCT00005980",
+              "title": "Comparison of Two Regimens of Liposomal Doxorubicin in Treating Women With Metastatic Breast Cancer"
+            },
+            {
+              "nct_id": "NCT00006120",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "France",
+              "source_url": "https://clinicaltrials.gov/study/NCT00006120",
+              "title": "Docetaxel or Paclitaxel in Treating Women With Unresectable Locally Advanced or Metastatic Breast Cancer"
+            },
+            {
+              "nct_id": "NCT00006121",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "France",
+              "source_url": "https://clinicaltrials.gov/study/NCT00006121",
+              "title": "Oxaliplatin in Treating Women With Advanced or Metastatic Breast Cancer That Has Not Responded to Previous Chemotherapy"
+            },
+            {
+              "nct_id": "NCT00010075",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "France",
+              "source_url": "https://clinicaltrials.gov/study/NCT00010075",
+              "title": "Combination Chemotherapy in Treating Older Women With Metastatic Breast Cancer"
+            },
+            {
+              "nct_id": "NCT00014612",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "France",
+              "source_url": "https://clinicaltrials.gov/study/NCT00014612",
+              "title": "Comparison of Complete Axillary Lymph Node Dissection With Axillary Radiation Therapy in Treating Women With Invasive Breast Cancer"
+            },
+            {
+              "nct_id": "NCT00017095",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "France",
+              "source_url": "https://clinicaltrials.gov/study/NCT00017095",
+              "title": "Biomarker (p53 Gene) Analysis and Combination Chemotherapy Followed by Radiation Therapy and Surgery in Treating Women With Large Operable or Locally Advanced or Inflammatory Breast Cancer"
+            },
+            {
+              "nct_id": "NCT00021255",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "France",
+              "source_url": "https://clinicaltrials.gov/study/NCT00021255",
+              "title": "Combination Chemotherapy With or Without Trastuzumab in Treating Women With Breast Cancer"
+            },
+            {
+              "nct_id": "NCT00022672",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "France",
+              "source_url": "https://clinicaltrials.gov/study/NCT00022672",
+              "title": "A Study to Evaluate the Efficacy and Safety of Herceptin® (Trastuzumab) in Combination With Arimidex® (Anastrozole) an Aromatase Inhibitor Compared to Arimidex® Alone in Patients With Metastatic Breast Cancer"
+            },
+            {
+              "nct_id": "NCT00028873",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "France",
+              "source_url": "https://clinicaltrials.gov/study/NCT00028873",
+              "title": "R101933 Combined With Chemotherapy in Treating Patients With Metastatic Breast Cancer That Has Not Responded to Previous Chemotherapy"
+            },
+            {
+              "nct_id": "NCT00036868",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "France",
+              "source_url": "https://clinicaltrials.gov/study/NCT00036868",
+              "title": "Combination Chemotherapy With Trastuzumab in Treating Women With Metastatic Breast Cancer"
+            },
+            {
+              "nct_id": "NCT00038467",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "France",
+              "source_url": "https://clinicaltrials.gov/study/NCT00038467",
+              "title": "Randomized Trial Of Exemestane Versus Continued Tamoxifen In Postmenopausal Women With Early Breast Cancer"
+            },
+            {
+              "nct_id": "NCT00045032",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "France",
+              "source_url": "https://clinicaltrials.gov/study/NCT00045032",
+              "title": "Herceptin (Trastuzumab) in Treating Women With Human Epidermal Growth Factor Receptor (HER) 2-Positive Primary Breast Cancer"
+            }
+          ]
+        },
+        {
+          "country": "Spain",
+          "trial_count": 1065,
+          "citations": [
+            {
+              "nct_id": "NCT00002851",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "Spain",
+              "source_url": "https://clinicaltrials.gov/study/NCT00002851",
+              "title": "Lymph Node Radiation Therapy in Patients With Stage I, Stage II, or Stage III Breast Cancer That Has Been Surgically Removed"
+            },
+            {
+              "nct_id": "NCT00003013",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "Spain",
+              "source_url": "https://clinicaltrials.gov/study/NCT00003013",
+              "title": "Chemotherapy Plus Surgery in Treating Women With Breast Cancer"
+            },
+            {
+              "nct_id": "NCT00003938",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "Spain",
+              "source_url": "https://clinicaltrials.gov/study/NCT00003938",
+              "title": "Liposomal Amphotericin B in Treating Granulocytopenia and Persistent Unexplained Fever in Cancer Patients"
+            },
+            {
+              "nct_id": "NCT00005980",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "Spain",
+              "source_url": "https://clinicaltrials.gov/study/NCT00005980",
+              "title": "Comparison of Two Regimens of Liposomal Doxorubicin in Treating Women With Metastatic Breast Cancer"
+            },
+            {
+              "nct_id": "NCT00021255",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "Spain",
+              "source_url": "https://clinicaltrials.gov/study/NCT00021255",
+              "title": "Combination Chemotherapy With or Without Trastuzumab in Treating Women With Breast Cancer"
+            },
+            {
+              "nct_id": "NCT00022672",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "Spain",
+              "source_url": "https://clinicaltrials.gov/study/NCT00022672",
+              "title": "A Study to Evaluate the Efficacy and Safety of Herceptin® (Trastuzumab) in Combination With Arimidex® (Anastrozole) an Aromatase Inhibitor Compared to Arimidex® Alone in Patients With Metastatic Breast Cancer"
+            },
+            {
+              "nct_id": "NCT00034918",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "Spain",
+              "source_url": "https://clinicaltrials.gov/study/NCT00034918",
+              "title": "This Study is to Assess the Efficacy and Safety of ZD6474 in Subjects With Metastatic Breast Cancer"
+            },
+            {
+              "nct_id": "NCT00038467",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "Spain",
+              "source_url": "https://clinicaltrials.gov/study/NCT00038467",
+              "title": "Randomized Trial Of Exemestane Versus Continued Tamoxifen In Postmenopausal Women With Early Breast Cancer"
+            },
+            {
+              "nct_id": "NCT00045032",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "Spain",
+              "source_url": "https://clinicaltrials.gov/study/NCT00045032",
+              "title": "Herceptin (Trastuzumab) in Treating Women With Human Epidermal Growth Factor Receptor (HER) 2-Positive Primary Breast Cancer"
+            },
+            {
+              "nct_id": "NCT00051051",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "Spain",
+              "source_url": "https://clinicaltrials.gov/study/NCT00051051",
+              "title": "A Phase II Study of CI-1033 in Treating Patients With Metastatic (Stage IV) Breast Cancer"
+            },
+            {
+              "nct_id": "NCT00065325",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "Spain",
+              "source_url": "https://clinicaltrials.gov/study/NCT00065325",
+              "title": "The Evaluation of the Efficacy and Tolerability of FASLODEX (Fulvestrant) and AROMASIN (Exemestane) in Hormone Receptor Positive Postmenopausal Women With Advanced Breast Cancer"
+            },
+            {
+              "nct_id": "NCT00065533",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "Spain",
+              "source_url": "https://clinicaltrials.gov/study/NCT00065533",
+              "title": "Pemetrexed as First Line Chemotherapy for Advanced Breast Cancer"
+            },
+            {
+              "nct_id": "NCT00073528",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "Spain",
+              "source_url": "https://clinicaltrials.gov/study/NCT00073528",
+              "title": "Study Comparing Lapatinib (GW572016) And Letrozole Versus Letrozole In Subjects With Advanced Or Metastatic Breast Cancer"
+            },
+            {
+              "nct_id": "NCT00074152",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "Spain",
+              "source_url": "https://clinicaltrials.gov/study/NCT00074152",
+              "title": "Adjuvant Chemotherapy in Treating Women Who Have Undergone Resection for Relapsed Breast Cancer; Chemotherapy as Adjuvant for LOcally Recurrent Breast Cancer"
+            },
+            {
+              "nct_id": "NCT00075270",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "Spain",
+              "source_url": "https://clinicaltrials.gov/study/NCT00075270",
+              "title": "Paclitaxel With / Without GW572016 (Lapatinib) As First Line Therapy For Women With Advanced Or Metastatic Breast Cancer"
+            },
+            {
+              "nct_id": "NCT00076024",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "Spain",
+              "source_url": "https://clinicaltrials.gov/study/NCT00076024",
+              "title": "AG-013736 In Combination With Docetaxel Versus Docetaxel Alone For Patients With Metastatic Breast Cancer"
+            },
+            {
+              "nct_id": "NCT00080301",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "Spain",
+              "source_url": "https://clinicaltrials.gov/study/NCT00080301",
+              "title": "Novel Epothilone Plus Capecitabine Versus Capecitabine Alone in Patients With Advanced Breast Cancer"
+            },
+            {
+              "nct_id": "NCT00081796",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "Spain",
+              "source_url": "https://clinicaltrials.gov/study/NCT00081796",
+              "title": "Breast Cancer Trial of RPR109881 Versus Capecitabine in Male or Female Patients With Advanced Breast Cancer"
+            },
+            {
+              "nct_id": "NCT00082277",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "Spain",
+              "source_url": "https://clinicaltrials.gov/study/NCT00082277",
+              "title": "Anastrozole Biphosphonate Study in Postmenopausal Women With Hormone-Receptor-Positive Early Breast Cancer"
+            },
+            {
+              "nct_id": "NCT00082433",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "Spain",
+              "source_url": "https://clinicaltrials.gov/study/NCT00082433",
+              "title": "Epothilone (Ixabepilone) Plus Capecitabine Versus Capecitabine Alone in Patients With Advanced Breast Cancer"
+            }
+          ]
+        },
+        {
+          "country": "Canada",
+          "trial_count": 1029,
+          "citations": [
+            {
+              "nct_id": "NCT00002542",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "Canada",
+              "source_url": "https://clinicaltrials.gov/study/NCT00002542",
+              "title": "Tamoxifen in Treating Women With High-Risk Breast Cancer"
+            },
+            {
+              "nct_id": "NCT00002707",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "Canada",
+              "source_url": "https://clinicaltrials.gov/study/NCT00002707",
+              "title": "Chemotherapy in Treating Women With Breast Cancer That Can Be Surgically Removed"
+            },
+            {
+              "nct_id": "NCT00002762",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "Canada",
+              "source_url": "https://clinicaltrials.gov/study/NCT00002762",
+              "title": "Correlation of Menstrual Cycle Phase at Time of Primary Surgery With 5-Year Disease-Free Survival in Women With Stage I or Stage II Breast Cancer"
+            },
+            {
+              "nct_id": "NCT00002864",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "Canada",
+              "source_url": "https://clinicaltrials.gov/study/NCT00002864",
+              "title": "Tamoxifen With or Without Octreotide in Treating Postmenopausal Women With Stage I, Stage II, or Stage III Breast Cancer"
+            },
+            {
+              "nct_id": "NCT00002866",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "Canada",
+              "source_url": "https://clinicaltrials.gov/study/NCT00002866",
+              "title": "Docetaxel and Epirubicin With and Without G-CSF in Treating Women With Metastatic Breast Cancer"
+            },
+            {
+              "nct_id": "NCT00002873",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "Canada",
+              "source_url": "https://clinicaltrials.gov/study/NCT00002873",
+              "title": "Radiation Therapy in Treating Women With Stage I or Stage II Breast Cancer"
+            },
+            {
+              "nct_id": "NCT00002937",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "Canada",
+              "source_url": "https://clinicaltrials.gov/study/NCT00002937",
+              "title": "Paclitaxel With or Without PSC 833 in Treating Patients With Metastatic Breast Cancer"
+            },
+            {
+              "nct_id": "NCT00002967",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "Canada",
+              "source_url": "https://clinicaltrials.gov/study/NCT00002967",
+              "title": "Octreotide, Tamoxifen, and Chemotherapy in Treating Women With Breast Cancer"
+            },
+            {
+              "nct_id": "NCT00002998",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "Canada",
+              "source_url": "https://clinicaltrials.gov/study/NCT00002998",
+              "title": "Gemcitabine and Cisplatin in Treating Patients With Metastatic Breast Cancer"
+            },
+            {
+              "nct_id": "NCT00003032",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "Canada",
+              "source_url": "https://clinicaltrials.gov/study/NCT00003032",
+              "title": "High Dose Chemotherapy Plus Peripheral Stem Cell Transplantation Compared With Standard Therapy in Treating Women With Metastatic or Recurrent Breast Cancer"
+            },
+            {
+              "nct_id": "NCT00003088",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "Canada",
+              "source_url": "https://clinicaltrials.gov/study/NCT00003088",
+              "title": "Combination Chemotherapy in Treating Patients With Breast Cancer"
+            },
+            {
+              "nct_id": "NCT00003140",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "Canada",
+              "source_url": "https://clinicaltrials.gov/study/NCT00003140",
+              "title": "Letrozole After Tamoxifen in Treating Women With Breast Cancer"
+            },
+            {
+              "nct_id": "NCT00003162",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "Canada",
+              "source_url": "https://clinicaltrials.gov/study/NCT00003162",
+              "title": "Radiation Therapy in Treating Patients With Bone Metastases From Breast or Prostate Cancer"
+            },
+            {
+              "nct_id": "NCT00003302",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "Canada",
+              "source_url": "https://clinicaltrials.gov/study/NCT00003302",
+              "title": "MRI to Detect Breast Tumors in Women"
+            },
+            {
+              "nct_id": "NCT00003351",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "Canada",
+              "source_url": "https://clinicaltrials.gov/study/NCT00003351",
+              "title": "Irinotecan in Treating Patients With Refractory Metastatic Breast Cancer"
+            },
+            {
+              "nct_id": "NCT00003352",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "Canada",
+              "source_url": "https://clinicaltrials.gov/study/NCT00003352",
+              "title": "Combination Chemotherapy in Treating Women With Stage IIIB or Stage IV Breast Cancer"
+            },
+            {
+              "nct_id": "NCT00003565",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "Canada",
+              "source_url": "https://clinicaltrials.gov/study/NCT00003565",
+              "title": "Docetaxel in Treating Patients With Solid Tumors"
+            },
+            {
+              "nct_id": "NCT00003600",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "Canada",
+              "source_url": "https://clinicaltrials.gov/study/NCT00003600",
+              "title": "Epoetin Alfa in Treating Anemia in Patients Who Are Receiving Chemotherapy"
+            },
+            {
+              "nct_id": "NCT00003612",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "Canada",
+              "source_url": "https://clinicaltrials.gov/study/NCT00003612",
+              "title": "Combination Chemotherapy and Trastuzumab in Treating Women With Metastatic Breast Cancer"
+            },
+            {
+              "nct_id": "NCT00003638",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "Canada",
+              "source_url": "https://clinicaltrials.gov/study/NCT00003638",
+              "title": "Vaccine Therapy in Treating Women With Metastatic Breast Cancer"
+            }
+          ]
+        },
+        {
+          "country": "Italy",
+          "trial_count": 1016,
+          "citations": [
+            {
+              "nct_id": "NCT00002528",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "Italy",
+              "source_url": "https://clinicaltrials.gov/study/NCT00002528",
+              "title": "Surgery With or Without Lymph Node Removal in Treating Older Women With Stage I or Stage IIA Breast Cancer"
+            },
+            {
+              "nct_id": "NCT00002529",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "Italy",
+              "source_url": "https://clinicaltrials.gov/study/NCT00002529",
+              "title": "Hormone Therapy and Chemotherapy in Treating Perimenopausal or Postmenopausal Women With Node-Positive Breast Cancer"
+            },
+            {
+              "nct_id": "NCT00002720",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "Italy",
+              "source_url": "https://clinicaltrials.gov/study/NCT00002720",
+              "title": "Surgery With or Without Lymph Node Removal in Treating Older Women With Stage I Breast Cancer"
+            },
+            {
+              "nct_id": "NCT00002851",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "Italy",
+              "source_url": "https://clinicaltrials.gov/study/NCT00002851",
+              "title": "Lymph Node Radiation Therapy in Patients With Stage I, Stage II, or Stage III Breast Cancer That Has Been Surgically Removed"
+            },
+            {
+              "nct_id": "NCT00003013",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "Italy",
+              "source_url": "https://clinicaltrials.gov/study/NCT00003013",
+              "title": "Chemotherapy Plus Surgery in Treating Women With Breast Cancer"
+            },
+            {
+              "nct_id": "NCT00003730",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "Italy",
+              "source_url": "https://clinicaltrials.gov/study/NCT00003730",
+              "title": "Vinorelbine Plus Fluorouracil in Treating Women With Metastatic Breast Cancer"
+            },
+            {
+              "nct_id": "NCT00003938",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "Italy",
+              "source_url": "https://clinicaltrials.gov/study/NCT00003938",
+              "title": "Liposomal Amphotericin B in Treating Granulocytopenia and Persistent Unexplained Fever in Cancer Patients"
+            },
+            {
+              "nct_id": "NCT00004935",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "Italy",
+              "source_url": "https://clinicaltrials.gov/study/NCT00004935",
+              "title": "Herceptin Followed by Chemotherapy in Treating Women With Metastatic Breast Cancer That Overexpresses HER2"
+            },
+            {
+              "nct_id": "NCT00005581",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "Italy",
+              "source_url": "https://clinicaltrials.gov/study/NCT00005581",
+              "title": "Combination Chemotherapy in Treating Women With Stage II or Stage III Breast Cancer"
+            },
+            {
+              "nct_id": "NCT00005980",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "Italy",
+              "source_url": "https://clinicaltrials.gov/study/NCT00005980",
+              "title": "Comparison of Two Regimens of Liposomal Doxorubicin in Treating Women With Metastatic Breast Cancer"
+            },
+            {
+              "nct_id": "NCT00014612",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "Italy",
+              "source_url": "https://clinicaltrials.gov/study/NCT00014612",
+              "title": "Comparison of Complete Axillary Lymph Node Dissection With Axillary Radiation Therapy in Treating Women With Invasive Breast Cancer"
+            },
+            {
+              "nct_id": "NCT00021255",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "Italy",
+              "source_url": "https://clinicaltrials.gov/study/NCT00021255",
+              "title": "Combination Chemotherapy With or Without Trastuzumab in Treating Women With Breast Cancer"
+            },
+            {
+              "nct_id": "NCT00022516",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "Italy",
+              "source_url": "https://clinicaltrials.gov/study/NCT00022516",
+              "title": "Low-dose Oral Cyclophosphamide and Methotrexate Maintenance for Hormone Receptor-negative Early Breast Cancer"
+            },
+            {
+              "nct_id": "NCT00022672",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "Italy",
+              "source_url": "https://clinicaltrials.gov/study/NCT00022672",
+              "title": "A Study to Evaluate the Efficacy and Safety of Herceptin® (Trastuzumab) in Combination With Arimidex® (Anastrozole) an Aromatase Inhibitor Compared to Arimidex® Alone in Patients With Metastatic Breast Cancer"
+            },
+            {
+              "nct_id": "NCT00038467",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "Italy",
+              "source_url": "https://clinicaltrials.gov/study/NCT00038467",
+              "title": "Randomized Trial Of Exemestane Versus Continued Tamoxifen In Postmenopausal Women With Early Breast Cancer"
+            },
+            {
+              "nct_id": "NCT00044525",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "Italy",
+              "source_url": "https://clinicaltrials.gov/study/NCT00044525",
+              "title": "Evaluation of BAY59-8862 in Taxane-Resistant Metastatic Breast Cancer Patients"
+            },
+            {
+              "nct_id": "NCT00045032",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "Italy",
+              "source_url": "https://clinicaltrials.gov/study/NCT00045032",
+              "title": "Herceptin (Trastuzumab) in Treating Women With Human Epidermal Growth Factor Receptor (HER) 2-Positive Primary Breast Cancer"
+            },
+            {
+              "nct_id": "NCT00051051",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "Italy",
+              "source_url": "https://clinicaltrials.gov/study/NCT00051051",
+              "title": "A Phase II Study of CI-1033 in Treating Patients With Metastatic (Stage IV) Breast Cancer"
+            },
+            {
+              "nct_id": "NCT00058526",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "Italy",
+              "source_url": "https://clinicaltrials.gov/study/NCT00058526",
+              "title": "A Dose-escalation Vaccine Trial in HER2-overexpressing Patients With High-risk Breast Cancer"
+            },
+            {
+              "nct_id": "NCT00062400",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "Italy",
+              "source_url": "https://clinicaltrials.gov/study/NCT00062400",
+              "title": "Assessing Women's Attitudes About the Risk of Infertility Related to Adjuvant Therapy for Early Breast Cancer"
+            }
+          ]
+        },
+        {
+          "country": "United Kingdom",
+          "trial_count": 871,
+          "citations": [
+            {
+              "nct_id": "NCT00002460",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "United Kingdom",
+              "source_url": "https://clinicaltrials.gov/study/NCT00002460",
+              "title": "Adjuvant Hormone Therapy in Treating Women With Operable Breast Cancer"
+            },
+            {
+              "nct_id": "NCT00002579",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "United Kingdom",
+              "source_url": "https://clinicaltrials.gov/study/NCT00002579",
+              "title": "Tamoxifen Following Combination Chemotherapy in Treating Women With Operable Invasive Breast Cancer"
+            },
+            {
+              "nct_id": "NCT00002580",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "United Kingdom",
+              "source_url": "https://clinicaltrials.gov/study/NCT00002580",
+              "title": "Tamoxifen, Ovarian Ablation, and/or Combination Chemotherapy in Treating Premenopausal Women With Stage I, Stage II, or Stage IIIA Invasive Breast Cancer"
+            },
+            {
+              "nct_id": "NCT00002581",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "United Kingdom",
+              "source_url": "https://clinicaltrials.gov/study/NCT00002581",
+              "title": "Tamoxifen With or Without Combination Chemotherapy in Treating Postmenopausal Women With Operable Invasive Breast Cancer"
+            },
+            {
+              "nct_id": "NCT00002582",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "United Kingdom",
+              "source_url": "https://clinicaltrials.gov/study/NCT00002582",
+              "title": "Tamoxifen, Ovarian Ablation, and/or Chemotherapy in Treating Women With Stage I, Stage II, or Stage IIIA Breast Cancer"
+            },
+            {
+              "nct_id": "NCT00002644",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "United Kingdom",
+              "source_url": "https://clinicaltrials.gov/study/NCT00002644",
+              "title": "Tamoxifen for the Prevention of Breast Cancer in High-Risk Women"
+            },
+            {
+              "nct_id": "NCT00002755",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "United Kingdom",
+              "source_url": "https://clinicaltrials.gov/study/NCT00002755",
+              "title": "Standard Chemotherapy Compared With High-Dose Combination Chemotherapy and Peripheral Stem Cell Transplantation in Treating Women With Breast Cancer"
+            },
+            {
+              "nct_id": "NCT00002777",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "United Kingdom",
+              "source_url": "https://clinicaltrials.gov/study/NCT00002777",
+              "title": "Exemestane Compared With Tamoxifen in Treating Women With Locally Recurrent or Metastatic Breast Cancer"
+            },
+            {
+              "nct_id": "NCT00002851",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "United Kingdom",
+              "source_url": "https://clinicaltrials.gov/study/NCT00002851",
+              "title": "Lymph Node Radiation Therapy in Patients With Stage I, Stage II, or Stage III Breast Cancer That Has Been Surgically Removed"
+            },
+            {
+              "nct_id": "NCT00002953",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "United Kingdom",
+              "source_url": "https://clinicaltrials.gov/study/NCT00002953",
+              "title": "Epirubicin and Cyclophosphamide Compared With Epirubicin and Paclitaxel in Treating Women With Metastatic Breast Cancer"
+            },
+            {
+              "nct_id": "NCT00003012",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "United Kingdom",
+              "source_url": "https://clinicaltrials.gov/study/NCT00003012",
+              "title": "Combination Chemotherapy Following Surgery in Treating Women With Early Stage Breast Cancer"
+            },
+            {
+              "nct_id": "NCT00003016",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "United Kingdom",
+              "source_url": "https://clinicaltrials.gov/study/NCT00003016",
+              "title": "Prolonged Tamoxifen Compared With Shorter Tamoxifen in Treating Patients Who Have Breast Cancer"
+            },
+            {
+              "nct_id": "NCT00003140",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "United Kingdom",
+              "source_url": "https://clinicaltrials.gov/study/NCT00003140",
+              "title": "Letrozole After Tamoxifen in Treating Women With Breast Cancer"
+            },
+            {
+              "nct_id": "NCT00003165",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "United Kingdom",
+              "source_url": "https://clinicaltrials.gov/study/NCT00003165",
+              "title": "Doxorubicin in Treating Women With Advanced Breast Cancer"
+            },
+            {
+              "nct_id": "NCT00003418",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "United Kingdom",
+              "source_url": "https://clinicaltrials.gov/study/NCT00003418",
+              "title": "Exemestane Compared With Tamoxifen in Treating Postmenopausal Women With Primary Breast Cancer"
+            },
+            {
+              "nct_id": "NCT00003577",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "United Kingdom",
+              "source_url": "https://clinicaltrials.gov/study/NCT00003577",
+              "title": "Combination Chemotherapy With or Without Epirubicin in Treating Women With Stage I or Stage II Breast Cancer"
+            },
+            {
+              "nct_id": "NCT00003678",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "United Kingdom",
+              "source_url": "https://clinicaltrials.gov/study/NCT00003678",
+              "title": "Tamoxifen in Treating Women With Breast Cancer"
+            },
+            {
+              "nct_id": "NCT00003679",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "United Kingdom",
+              "source_url": "https://clinicaltrials.gov/study/NCT00003679",
+              "title": "Combination Chemotherapy in Treating Women With Breast Cancer"
+            },
+            {
+              "nct_id": "NCT00003680",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "United Kingdom",
+              "source_url": "https://clinicaltrials.gov/study/NCT00003680",
+              "title": "Standard Chemotherapy Compared With High-Dose Chemotherapy Plus Peripheral Stem Cell Transplant in Treating Women With Advanced or Inflammatory Breast Cancer"
+            },
+            {
+              "nct_id": "NCT00003893",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "United Kingdom",
+              "source_url": "https://clinicaltrials.gov/study/NCT00003893",
+              "title": "Adjuvant Chemotherapy Plus Radiation Therapy in Treating Women With Early-Stage Breast Cancer"
+            }
+          ]
+        },
+        {
+          "country": "Germany",
+          "trial_count": 771,
+          "citations": [
+            {
+              "nct_id": "NCT00002544",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "Germany",
+              "source_url": "https://clinicaltrials.gov/study/NCT00002544",
+              "title": "Mitoxantrone With or Without Docetaxel in Treating Women With Metastatic Breast Cancer"
+            },
+            {
+              "nct_id": "NCT00002851",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "Germany",
+              "source_url": "https://clinicaltrials.gov/study/NCT00002851",
+              "title": "Lymph Node Radiation Therapy in Patients With Stage I, Stage II, or Stage III Breast Cancer That Has Been Surgically Removed"
+            },
+            {
+              "nct_id": "NCT00003013",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "Germany",
+              "source_url": "https://clinicaltrials.gov/study/NCT00003013",
+              "title": "Chemotherapy Plus Surgery in Treating Women With Breast Cancer"
+            },
+            {
+              "nct_id": "NCT00003302",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "Germany",
+              "source_url": "https://clinicaltrials.gov/study/NCT00003302",
+              "title": "MRI to Detect Breast Tumors in Women"
+            },
+            {
+              "nct_id": "NCT00003938",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "Germany",
+              "source_url": "https://clinicaltrials.gov/study/NCT00003938",
+              "title": "Liposomal Amphotericin B in Treating Granulocytopenia and Persistent Unexplained Fever in Cancer Patients"
+            },
+            {
+              "nct_id": "NCT00006121",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "Germany",
+              "source_url": "https://clinicaltrials.gov/study/NCT00006121",
+              "title": "Oxaliplatin in Treating Women With Advanced or Metastatic Breast Cancer That Has Not Responded to Previous Chemotherapy"
+            },
+            {
+              "nct_id": "NCT00021255",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "Germany",
+              "source_url": "https://clinicaltrials.gov/study/NCT00021255",
+              "title": "Combination Chemotherapy With or Without Trastuzumab in Treating Women With Breast Cancer"
+            },
+            {
+              "nct_id": "NCT00022672",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "Germany",
+              "source_url": "https://clinicaltrials.gov/study/NCT00022672",
+              "title": "A Study to Evaluate the Efficacy and Safety of Herceptin® (Trastuzumab) in Combination With Arimidex® (Anastrozole) an Aromatase Inhibitor Compared to Arimidex® Alone in Patients With Metastatic Breast Cancer"
+            },
+            {
+              "nct_id": "NCT00038467",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "Germany",
+              "source_url": "https://clinicaltrials.gov/study/NCT00038467",
+              "title": "Randomized Trial Of Exemestane Versus Continued Tamoxifen In Postmenopausal Women With Early Breast Cancer"
+            },
+            {
+              "nct_id": "NCT00041808",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "Germany",
+              "source_url": "https://clinicaltrials.gov/study/NCT00041808",
+              "title": "Magnetic-Targeted Doxorubicin in Treating Patients With Cancer Metastatic to the Liver"
+            },
+            {
+              "nct_id": "NCT00043368",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "Germany",
+              "source_url": "https://clinicaltrials.gov/study/NCT00043368",
+              "title": "PF-3512676 (CPG 7909) Injection For Patients Who Completed An Oncology Study Using PF-3512676 (CPG 7909)"
+            },
+            {
+              "nct_id": "NCT00044525",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "Germany",
+              "source_url": "https://clinicaltrials.gov/study/NCT00044525",
+              "title": "Evaluation of BAY59-8862 in Taxane-Resistant Metastatic Breast Cancer Patients"
+            },
+            {
+              "nct_id": "NCT00045032",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "Germany",
+              "source_url": "https://clinicaltrials.gov/study/NCT00045032",
+              "title": "Herceptin (Trastuzumab) in Treating Women With Human Epidermal Growth Factor Receptor (HER) 2-Positive Primary Breast Cancer"
+            },
+            {
+              "nct_id": "NCT00047099",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "Germany",
+              "source_url": "https://clinicaltrials.gov/study/NCT00047099",
+              "title": "Combination Chemotherapy in Treating Women With Breast Cancer"
+            },
+            {
+              "nct_id": "NCT00049660",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "Germany",
+              "source_url": "https://clinicaltrials.gov/study/NCT00049660",
+              "title": "Capecitabine Compared With Vinorelbine in Treating Women With Metastatic Breast Cancer"
+            },
+            {
+              "nct_id": "NCT00058058",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "Germany",
+              "source_url": "https://clinicaltrials.gov/study/NCT00058058",
+              "title": "Magnetic Resonance Imaging in Women Recently Diagnosed With Unilateral Breast Cancer"
+            },
+            {
+              "nct_id": "NCT00062400",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "Germany",
+              "source_url": "https://clinicaltrials.gov/study/NCT00062400",
+              "title": "Assessing Women's Attitudes About the Risk of Infertility Related to Adjuvant Therapy for Early Breast Cancer"
+            },
+            {
+              "nct_id": "NCT00062686",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "Germany",
+              "source_url": "https://clinicaltrials.gov/study/NCT00062686",
+              "title": "GW572016 For Treatment Of Refractory Metastatic Breast Cancer"
+            },
+            {
+              "nct_id": "NCT00065325",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "Germany",
+              "source_url": "https://clinicaltrials.gov/study/NCT00065325",
+              "title": "The Evaluation of the Efficacy and Tolerability of FASLODEX (Fulvestrant) and AROMASIN (Exemestane) in Hormone Receptor Positive Postmenopausal Women With Advanced Breast Cancer"
+            },
+            {
+              "nct_id": "NCT00065533",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "Germany",
+              "source_url": "https://clinicaltrials.gov/study/NCT00065533",
+              "title": "Pemetrexed as First Line Chemotherapy for Advanced Breast Cancer"
+            }
+          ]
+        },
+        {
+          "country": "South Korea",
+          "trial_count": 709,
+          "citations": [
+            {
+              "nct_id": "NCT00021255",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "South Korea",
+              "source_url": "https://clinicaltrials.gov/study/NCT00021255",
+              "title": "Combination Chemotherapy With or Without Trastuzumab in Treating Women With Breast Cancer"
+            },
+            {
+              "nct_id": "NCT00045032",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "South Korea",
+              "source_url": "https://clinicaltrials.gov/study/NCT00045032",
+              "title": "Herceptin (Trastuzumab) in Treating Women With Human Epidermal Growth Factor Receptor (HER) 2-Positive Primary Breast Cancer"
+            },
+            {
+              "nct_id": "NCT00073528",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "South Korea",
+              "source_url": "https://clinicaltrials.gov/study/NCT00073528",
+              "title": "Study Comparing Lapatinib (GW572016) And Letrozole Versus Letrozole In Subjects With Advanced Or Metastatic Breast Cancer"
+            },
+            {
+              "nct_id": "NCT00075270",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "South Korea",
+              "source_url": "https://clinicaltrials.gov/study/NCT00075270",
+              "title": "Paclitaxel With / Without GW572016 (Lapatinib) As First Line Therapy For Women With Advanced Or Metastatic Breast Cancer"
+            },
+            {
+              "nct_id": "NCT00080301",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "South Korea",
+              "source_url": "https://clinicaltrials.gov/study/NCT00080301",
+              "title": "Novel Epothilone Plus Capecitabine Versus Capecitabine Alone in Patients With Advanced Breast Cancer"
+            },
+            {
+              "nct_id": "NCT00081796",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "South Korea",
+              "source_url": "https://clinicaltrials.gov/study/NCT00081796",
+              "title": "Breast Cancer Trial of RPR109881 Versus Capecitabine in Male or Female Patients With Advanced Breast Cancer"
+            },
+            {
+              "nct_id": "NCT00082433",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "South Korea",
+              "source_url": "https://clinicaltrials.gov/study/NCT00082433",
+              "title": "Epothilone (Ixabepilone) Plus Capecitabine Versus Capecitabine Alone in Patients With Advanced Breast Cancer"
+            },
+            {
+              "nct_id": "NCT00087958",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "South Korea",
+              "source_url": "https://clinicaltrials.gov/study/NCT00087958",
+              "title": "Intravenous RPR109881 in Male or Female Patients With Advanced Breast Cancer Who no Longer Respond to Anthracycline, Taxane and Capecitabine Treatment"
+            },
+            {
+              "nct_id": "NCT00171314",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "South Korea",
+              "source_url": "https://clinicaltrials.gov/study/NCT00171314",
+              "title": "The Use of Zoledronic Acid to Prevent Cancer-treatment Bone Loss in Post-menopausal Women Receiving Adjuvant Letrozole for Breast Cancer"
+            },
+            {
+              "nct_id": "NCT00171340",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "South Korea",
+              "source_url": "https://clinicaltrials.gov/study/NCT00171340",
+              "title": "Zoledronic Acid in the Prevention of Cancer Treatment Related Bone Loss in Postmenopausal Women Receiving Letrozole for Breast Cancer."
+            },
+            {
+              "nct_id": "NCT00191152",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "South Korea",
+              "source_url": "https://clinicaltrials.gov/study/NCT00191152",
+              "title": "A Phase III Trial For Patients With Metastatic Breast Cancer"
+            },
+            {
+              "nct_id": "NCT00191854",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "South Korea",
+              "source_url": "https://clinicaltrials.gov/study/NCT00191854",
+              "title": "Gemcitabine Combinations in Metastatic Breast Cancer (MBC), 1st Line"
+            },
+            {
+              "nct_id": "NCT00248170",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "South Korea",
+              "source_url": "https://clinicaltrials.gov/study/NCT00248170",
+              "title": "Comparison Trial of Letrozole to Anastrozole in the Adjuvant Treatment of Postmenopausal Women With Hormone Receptor and Node Positive Breast Cancer"
+            },
+            {
+              "nct_id": "NCT00262067",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "South Korea",
+              "source_url": "https://clinicaltrials.gov/study/NCT00262067",
+              "title": "A Study Evaluating the Efficacy and Safety of Bevacizumab in Combination With Chemotherapy in Untreated Metastatic Breast Cancer (RIBBON 1)"
+            },
+            {
+              "nct_id": "NCT00312208",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "South Korea",
+              "source_url": "https://clinicaltrials.gov/study/NCT00312208",
+              "title": "Docetaxel in Breast Cancer"
+            },
+            {
+              "nct_id": "NCT00333775",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "South Korea",
+              "source_url": "https://clinicaltrials.gov/study/NCT00333775",
+              "title": "A Study of Bevacizumab (Avastin) in Women With HER2 Negative Metastatic Breast Cancer"
+            },
+            {
+              "nct_id": "NCT00338247",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "South Korea",
+              "source_url": "https://clinicaltrials.gov/study/NCT00338247",
+              "title": "EAP (Expanded Access Protocol) Of Lapatinib Combined With Capecitabine In Metastatic Breast Cancer"
+            },
+            {
+              "nct_id": "NCT00347919",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "South Korea",
+              "source_url": "https://clinicaltrials.gov/study/NCT00347919",
+              "title": "Pazopanib Plus Lapatinib Compared To Lapatinib Alone In Subjects With Advanced Or Metastatic Breast Cancer"
+            },
+            {
+              "nct_id": "NCT00373113",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "South Korea",
+              "source_url": "https://clinicaltrials.gov/study/NCT00373113",
+              "title": "A Clinical Trial Comparing Efficacy And Safety Of Sunitinib And Capecitabine"
+            },
+            {
+              "nct_id": "NCT00374322",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "South Korea",
+              "source_url": "https://clinicaltrials.gov/study/NCT00374322",
+              "title": "Tykerb Evaluation After Chemotherapy (TEACH): Lapatinib Versus Placebo In Women With Early-Stage Breast Cancer"
+            }
+          ]
+        },
+        {
+          "country": "Belgium",
+          "trial_count": 636,
+          "citations": [
+            {
+              "nct_id": "NCT00002460",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "Belgium",
+              "source_url": "https://clinicaltrials.gov/study/NCT00002460",
+              "title": "Adjuvant Hormone Therapy in Treating Women With Operable Breast Cancer"
+            },
+            {
+              "nct_id": "NCT00002777",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "Belgium",
+              "source_url": "https://clinicaltrials.gov/study/NCT00002777",
+              "title": "Exemestane Compared With Tamoxifen in Treating Women With Locally Recurrent or Metastatic Breast Cancer"
+            },
+            {
+              "nct_id": "NCT00002851",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "Belgium",
+              "source_url": "https://clinicaltrials.gov/study/NCT00002851",
+              "title": "Lymph Node Radiation Therapy in Patients With Stage I, Stage II, or Stage III Breast Cancer That Has Been Surgically Removed"
+            },
+            {
+              "nct_id": "NCT00003418",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "Belgium",
+              "source_url": "https://clinicaltrials.gov/study/NCT00003418",
+              "title": "Exemestane Compared With Tamoxifen in Treating Postmenopausal Women With Primary Breast Cancer"
+            },
+            {
+              "nct_id": "NCT00003730",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "Belgium",
+              "source_url": "https://clinicaltrials.gov/study/NCT00003730",
+              "title": "Vinorelbine Plus Fluorouracil in Treating Women With Metastatic Breast Cancer"
+            },
+            {
+              "nct_id": "NCT00003938",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "Belgium",
+              "source_url": "https://clinicaltrials.gov/study/NCT00003938",
+              "title": "Liposomal Amphotericin B in Treating Granulocytopenia and Persistent Unexplained Fever in Cancer Patients"
+            },
+            {
+              "nct_id": "NCT00006121",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "Belgium",
+              "source_url": "https://clinicaltrials.gov/study/NCT00006121",
+              "title": "Oxaliplatin in Treating Women With Advanced or Metastatic Breast Cancer That Has Not Responded to Previous Chemotherapy"
+            },
+            {
+              "nct_id": "NCT00017095",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "Belgium",
+              "source_url": "https://clinicaltrials.gov/study/NCT00017095",
+              "title": "Biomarker (p53 Gene) Analysis and Combination Chemotherapy Followed by Radiation Therapy and Surgery in Treating Women With Large Operable or Locally Advanced or Inflammatory Breast Cancer"
+            },
+            {
+              "nct_id": "NCT00021255",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "Belgium",
+              "source_url": "https://clinicaltrials.gov/study/NCT00021255",
+              "title": "Combination Chemotherapy With or Without Trastuzumab in Treating Women With Breast Cancer"
+            },
+            {
+              "nct_id": "NCT00022516",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "Belgium",
+              "source_url": "https://clinicaltrials.gov/study/NCT00022516",
+              "title": "Low-dose Oral Cyclophosphamide and Methotrexate Maintenance for Hormone Receptor-negative Early Breast Cancer"
+            },
+            {
+              "nct_id": "NCT00028704",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "Belgium",
+              "source_url": "https://clinicaltrials.gov/study/NCT00028704",
+              "title": "Breast-Conserving Therapy Compared With Mastectomy Followed By Radiation Therapy in Treating Women With Locally Advanced Breast Cancer Previously Treated With Chemotherapy"
+            },
+            {
+              "nct_id": "NCT00028873",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "Belgium",
+              "source_url": "https://clinicaltrials.gov/study/NCT00028873",
+              "title": "R101933 Combined With Chemotherapy in Treating Patients With Metastatic Breast Cancer That Has Not Responded to Previous Chemotherapy"
+            },
+            {
+              "nct_id": "NCT00033683",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "Belgium",
+              "source_url": "https://clinicaltrials.gov/study/NCT00033683",
+              "title": "Combination Chemotherapy in Treating Women With Resected Breast Cancer"
+            },
+            {
+              "nct_id": "NCT00036868",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "Belgium",
+              "source_url": "https://clinicaltrials.gov/study/NCT00036868",
+              "title": "Combination Chemotherapy With Trastuzumab in Treating Women With Metastatic Breast Cancer"
+            },
+            {
+              "nct_id": "NCT00038103",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "Belgium",
+              "source_url": "https://clinicaltrials.gov/study/NCT00038103",
+              "title": "Open-Label Study Of Exemestane With Or Without Celecoxib In Postmenopausal Women With ABC Having Progressed On Tamoxifen"
+            },
+            {
+              "nct_id": "NCT00038467",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "Belgium",
+              "source_url": "https://clinicaltrials.gov/study/NCT00038467",
+              "title": "Randomized Trial Of Exemestane Versus Continued Tamoxifen In Postmenopausal Women With Early Breast Cancer"
+            },
+            {
+              "nct_id": "NCT00045032",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "Belgium",
+              "source_url": "https://clinicaltrials.gov/study/NCT00045032",
+              "title": "Herceptin (Trastuzumab) in Treating Women With Human Epidermal Growth Factor Receptor (HER) 2-Positive Primary Breast Cancer"
+            },
+            {
+              "nct_id": "NCT00049660",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "Belgium",
+              "source_url": "https://clinicaltrials.gov/study/NCT00049660",
+              "title": "Capecitabine Compared With Vinorelbine in Treating Women With Metastatic Breast Cancer"
+            },
+            {
+              "nct_id": "NCT00050141",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "Belgium",
+              "source_url": "https://clinicaltrials.gov/study/NCT00050141",
+              "title": "Study of Letrozole Plus Tipifarnib or Placebo in the Treatment of Advanced Breast Cancer"
+            },
+            {
+              "nct_id": "NCT00051051",
+              "field_path": "protocolSection.contactsLocationsModule.locations.country",
+              "value": "Belgium",
+              "source_url": "https://clinicaltrials.gov/study/NCT00051051",
+              "title": "A Phase II Study of CI-1033 in Treating Patients With Metastatic (Stage IV) Breast Cancer"
+            }
+          ]
+        }
+      ],
+      "metadata": {
+        "orientation": "horizontal",
+        "sort_order": "descending",
+        "show_data_labels": true,
+        "data_label_field": "trial_count",
+        "data_label_format": "comma",
+        "note": "데이터 필드: country, trial_count. 상위 10개국 랭킹(내림차순).",
+        "metric": "distinct_nct_id_count",
+        "design_source": "llm",
+        "candidate_chart_types": [
+          "horizontal_bar_chart",
+          "bar_chart"
+        ]
+      }
+    }
+  ],
+  "meta": {
+    "request_id": "13b24e1c-48b0-4e8e-a4ca-6922755ee9ef",
+    "audit_log": "logs/agent_runs/2026-08-09.jsonl",
+    "source": "ClinicalTrials.gov",
+    "api_version": "2.0.5",
+    "data_timestamp": "2026-08-07T09:00:05",
+    "retrieved_at": "2026-08-09T06:54:53.786012+00:00",
+    "records_retrieved": 16689,
+    "records_used": 16689,
+    "retrieval": {
+      "requests": [
+        {
+          "query_params": {
+            "format": "json",
+            "pageSize": 1000,
+            "countTotal": "true",
+            "query.cond": "Breast Cancer"
+          },
+          "fields": [
+            "NCTId",
+            "BriefTitle",
+            "OverallStatus",
+            "StartDate",
+            "Phase",
+            "StudyType",
+            "EnrollmentCount",
+            "Condition",
+            "InterventionName",
+            "InterventionType",
+            "LeadSponsorName",
+            "LeadSponsorClass",
+            "LocationCountry"
+          ],
+          "pages": 17,
+          "retrieved_count": 16689,
+          "total_count": 16689,
+          "truncated": false
+        }
+      ]
+    },
+    "detail_retrieval": {
+      "requested_count": 0,
+      "retrieved_count": 0,
+      "limit": 50,
+      "truncated": false,
+      "nct_ids": [],
+      "strategy": "on_demand"
+    },
+    "agent_trace": [
+      {
+        "step": 1,
+        "action": "create_plan",
+        "status": "success"
+      },
+      {
+        "step": 2,
+        "action": "search_trials",
+        "status": "success",
+        "records": 16689
+      },
+      {
+        "step": 3,
+        "action": "normalize_and_filter",
+        "status": "success",
+        "records": 16689,
+        "excluded": 0
+      },
+      {
+        "step": 4,
+        "action": "aggregate_and_build",
+        "analysis_id": "top_countries_breast_cancer",
+        "status": "success"
+      },
+      {
+        "step": 5,
+        "action": "design_visualization",
+        "analysis_id": "top_countries_breast_cancer",
+        "status": "success",
+        "chart_type": "horizontal_bar_chart",
+        "design_source": "llm"
+      }
+    ]
+  }
+}

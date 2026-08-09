@@ -1,0 +1,1630 @@
+{
+  "query": "폐암 임상시험을 많이 후원한 스폰서 상위 10개를 보여줘.",
+  "plan": {
+    "filters": {
+      "condition": "lung cancer",
+      "interventions": [],
+      "sponsor": null,
+      "country": null,
+      "overall_statuses": [],
+      "phases": [],
+      "study_types": [],
+      "start_year": null,
+      "end_year": null
+    },
+    "analyses": [
+      {
+        "id": "top_sponsors_lung_cancer",
+        "type": "ranking",
+        "group_by": [
+          "sponsor"
+        ],
+        "limit": 10,
+        "minimum_weight": 1
+      }
+    ],
+    "assumptions": [
+      "Translated '폐암' to the ClinicalTrials.gov condition term 'lung cancer'.",
+      "No start/end year, status, phase, or country filter was provided; all matching studies are included. Records missing a sponsor are excluded from the ranking."
+    ]
+  },
+  "visualizations": [
+    {
+      "id": "top_sponsors_lung_cancer",
+      "type": "horizontal_bar_chart",
+      "title": "폐암 임상시험 상위 10 스폰서",
+      "encoding": {
+        "mark": "bar",
+        "orientation": "horizontal",
+        "x": {
+          "field": "trial_count",
+          "type": "quantitative",
+          "axis": {
+            "title": "임상시험 수"
+          }
+        },
+        "y": {
+          "field": "sponsor",
+          "type": "ordinal",
+          "axis": {
+            "title": ""
+          },
+          "sort": "-x"
+        },
+        "tooltip": [
+          {
+            "field": "sponsor",
+            "type": "nominal",
+            "title": "스폰서"
+          },
+          {
+            "field": "trial_count",
+            "type": "quantitative",
+            "title": "임상시험 수"
+          }
+        ],
+        "text": {
+          "field": "trial_count",
+          "type": "quantitative",
+          "format": "d"
+        }
+      },
+      "data": [
+        {
+          "sponsor": "National Cancer Institute (NCI)",
+          "trial_count": 385,
+          "citations": [
+            {
+              "nct_id": "NCT00001450",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "National Cancer Institute (NCI)",
+              "source_url": "https://clinicaltrials.gov/study/NCT00001450",
+              "title": "Phase II Trial of a 96-Hour Continuous Infusion of Paclitaxel Followed by Cisplatin for Patients With Stage III/IV and Relapsed NSCLC"
+            },
+            {
+              "nct_id": "NCT00001499",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "National Cancer Institute (NCI)",
+              "source_url": "https://clinicaltrials.gov/study/NCT00001499",
+              "title": "Phase II Neoadjuvant Trial of a Continuous Infusion of Paclitaxel Plus Cisplatin Followed by Chest Radiotherapy for Patients With Stage III Non-Small Cell Lung Cancer"
+            },
+            {
+              "nct_id": "NCT00001702",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "National Cancer Institute (NCI)",
+              "source_url": "https://clinicaltrials.gov/study/NCT00001702",
+              "title": "Evaluation of the Association of Polymorphisms in the Innate Immune System With the Risk for Blastomycosis Dermatitidis Infection in Patients Not Infected With HIV and Complications Associated With Blastomycosis Dermatitidis Infection"
+            },
+            {
+              "nct_id": "NCT00001805",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "National Cancer Institute (NCI)",
+              "source_url": "https://clinicaltrials.gov/study/NCT00001805",
+              "title": "A Phase II Clinical Trial of Suppression of Human Antimouse Antibody and Human Antitoxin Response to Immunotoxin LMB-1 by Rituximab"
+            },
+            {
+              "nct_id": "NCT00001823",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "National Cancer Institute (NCI)",
+              "source_url": "https://clinicaltrials.gov/study/NCT00001823",
+              "title": "Evaluation for NCI Surgery Branch Clinical Research Protocols"
+            },
+            {
+              "nct_id": "NCT00001944",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "National Cancer Institute (NCI)",
+              "source_url": "https://clinicaltrials.gov/study/NCT00001944",
+              "title": "Vinorelbine and XR9576 to Treat Cancer"
+            },
+            {
+              "nct_id": "NCT00002537",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "National Cancer Institute (NCI)",
+              "source_url": "https://clinicaltrials.gov/study/NCT00002537",
+              "title": "Radiation Therapy Plus Topotecan in Treating Patients With Non-small Cell Lung Cancer"
+            },
+            {
+              "nct_id": "NCT00002540",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "National Cancer Institute (NCI)",
+              "source_url": "https://clinicaltrials.gov/study/NCT00002540",
+              "title": "Screening for Prostate Cancer in Older Patients (PLCO Screening Trial)"
+            },
+            {
+              "nct_id": "NCT00002625",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "National Cancer Institute (NCI)",
+              "source_url": "https://clinicaltrials.gov/study/NCT00002625",
+              "title": "Topotecan and Radiation Therapy in Treating Patients With Solid Tumors or Lymphoma"
+            },
+            {
+              "nct_id": "NCT00002852",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "National Cancer Institute (NCI)",
+              "source_url": "https://clinicaltrials.gov/study/NCT00002852",
+              "title": "Surgery With or Without Chemotherapy in Treating Patients With Stage I Non-small Cell Lung Cancer"
+            },
+            {
+              "nct_id": "NCT00003240",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "National Cancer Institute (NCI)",
+              "source_url": "https://clinicaltrials.gov/study/NCT00003240",
+              "title": "Standard Therapy Given With or Without Combination Chemotherapy in Treating Patients With Non-small Cell Lung Cancer"
+            },
+            {
+              "nct_id": "NCT00003869",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "National Cancer Institute (NCI)",
+              "source_url": "https://clinicaltrials.gov/study/NCT00003869",
+              "title": "Carboxyamidotriazole in Treating Patients With Stage III or Stage IV Non-small Cell Lung Cancer"
+            },
+            {
+              "nct_id": "NCT00004074",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "National Cancer Institute (NCI)",
+              "source_url": "https://clinicaltrials.gov/study/NCT00004074",
+              "title": "Interleukin-12 and Trastuzumab in Treating Patients With Cancer That Has High Levels of HER2/Neu"
+            },
+            {
+              "nct_id": "NCT00004859",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "National Cancer Institute (NCI)",
+              "source_url": "https://clinicaltrials.gov/study/NCT00004859",
+              "title": "Carboplatin, Paclitaxel, and Radiation Therapy With or Without Thalidomide in Patients With Stage III Non-small Cell Lung Cancer"
+            },
+            {
+              "nct_id": "NCT00004883",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "National Cancer Institute (NCI)",
+              "source_url": "https://clinicaltrials.gov/study/NCT00004883",
+              "title": "Trastuzumab in Treating Patients With Stage IIIB or Stage IV Non-small Cell Lung Cancer That Overexpresses HER2"
+            },
+            {
+              "nct_id": "NCT00005065",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "National Cancer Institute (NCI)",
+              "source_url": "https://clinicaltrials.gov/study/NCT00005065",
+              "title": "Chemotherapy, Radiation Therapy, and Surgery in Treating Patients With Stage IIIA Non-small Cell Lung Cancer"
+            },
+            {
+              "nct_id": "NCT00005655",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "National Cancer Institute (NCI)",
+              "source_url": "https://clinicaltrials.gov/study/NCT00005655",
+              "title": "Combination Therapy of Interleukin-12 and Interleukin-2 to Treat Advanced Cancer"
+            },
+            {
+              "nct_id": "NCT00005838",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "National Cancer Institute (NCI)",
+              "source_url": "https://clinicaltrials.gov/study/NCT00005838",
+              "title": "Combination Chemotherapy Plus Radiation Therapy With or Without AE-941 in Treating Patients With Stage III Non-small Cell Lung Cancer That Cannot Be Removed By Surgery"
+            },
+            {
+              "nct_id": "NCT00005842",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "National Cancer Institute (NCI)",
+              "source_url": "https://clinicaltrials.gov/study/NCT00005842",
+              "title": "Trastuzumab Plus R115777 in Treating Patients With Advanced or Metastatic Cancer"
+            },
+            {
+              "nct_id": "NCT00006014",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "National Cancer Institute (NCI)",
+              "source_url": "https://clinicaltrials.gov/study/NCT00006014",
+              "title": "SU5416 in Treating Patients With Malignant Mesothelioma"
+            }
+          ]
+        },
+        {
+          "sponsor": "AstraZeneca",
+          "trial_count": 275,
+          "citations": [
+            {
+              "nct_id": "NCT00006048",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "AstraZeneca",
+              "source_url": "https://clinicaltrials.gov/study/NCT00006048",
+              "title": "ZD 1839 Plus Combination Chemotherapy in Treating Patients With Non-Small Cell Lung Cancer"
+            },
+            {
+              "nct_id": "NCT00006049",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "AstraZeneca",
+              "source_url": "https://clinicaltrials.gov/study/NCT00006049",
+              "title": "ZD 1839 Plus Chemotherapy in Treating Patients With Non-Small Cell Lung Cancer"
+            },
+            {
+              "nct_id": "NCT00034879",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "AstraZeneca",
+              "source_url": "https://clinicaltrials.gov/study/NCT00034879",
+              "title": "Iressa Expanded Access Program (EAP)"
+            },
+            {
+              "nct_id": "NCT00076388",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "AstraZeneca",
+              "source_url": "https://clinicaltrials.gov/study/NCT00076388",
+              "title": "Iressa Versus Docetaxel (Taxotere)"
+            },
+            {
+              "nct_id": "NCT00090675",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "AstraZeneca",
+              "source_url": "https://clinicaltrials.gov/study/NCT00090675",
+              "title": "Maintenance ZD1839 (IRESSA®) Following Completion of Front Line, Platinum-Based, Double Chemotherapy in Subjects With Advanced or Metastatic Non-Small Cell Lung Cancer"
+            },
+            {
+              "nct_id": "NCT00234442",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "AstraZeneca",
+              "source_url": "https://clinicaltrials.gov/study/NCT00234442",
+              "title": "Iressa in the Treatment of Brain Metastases From Non Small Cell Lung Cancer"
+            },
+            {
+              "nct_id": "NCT00234468",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "AstraZeneca",
+              "source_url": "https://clinicaltrials.gov/study/NCT00234468",
+              "title": "Iressa vs Placebo as Maintenance Therapy in Locally Advanced NSCLC"
+            },
+            {
+              "nct_id": "NCT00243347",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "AstraZeneca",
+              "source_url": "https://clinicaltrials.gov/study/NCT00243347",
+              "title": "The Effects of AZD2171 in Patients With Non-Small Cell Lung Cancer or Head & Neck Cancer"
+            },
+            {
+              "nct_id": "NCT00252707",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "AstraZeneca",
+              "source_url": "https://clinicaltrials.gov/study/NCT00252707",
+              "title": "Iressa 2nd Line Phase III Study in Japan"
+            },
+            {
+              "nct_id": "NCT00252759",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "AstraZeneca",
+              "source_url": "https://clinicaltrials.gov/study/NCT00252759",
+              "title": "Iressa Case Control Study in Japan"
+            },
+            {
+              "nct_id": "NCT00252798",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "AstraZeneca",
+              "source_url": "https://clinicaltrials.gov/study/NCT00252798",
+              "title": "ZD1839 (Iressa™) and Concurrent Chemo-Radiation in Patients With Locally Advanced Non Small Cell Lung Cancer"
+            },
+            {
+              "nct_id": "NCT00255489",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "AstraZeneca",
+              "source_url": "https://clinicaltrials.gov/study/NCT00255489",
+              "title": "A Phase I Study of ZD1839 and Palliative Thoracic Radiotherapy in Patients With Non-small-cell Lung Cancer"
+            },
+            {
+              "nct_id": "NCT00256711",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "AstraZeneca",
+              "source_url": "https://clinicaltrials.gov/study/NCT00256711",
+              "title": "Phase II Iressa Versus Vinorelbine (INVITE)"
+            },
+            {
+              "nct_id": "NCT00259064",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "AstraZeneca",
+              "source_url": "https://clinicaltrials.gov/study/NCT00259064",
+              "title": "Iressa v BSC (Best Supportive Care) in First Line NSCLC"
+            },
+            {
+              "nct_id": "NCT00264498",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "AstraZeneca",
+              "source_url": "https://clinicaltrials.gov/study/NCT00264498",
+              "title": "Phase II Iressa & Carbo/Gem in NSCLC"
+            },
+            {
+              "nct_id": "NCT00298688",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "AstraZeneca",
+              "source_url": "https://clinicaltrials.gov/study/NCT00298688",
+              "title": "A Study of IRESSA in Relapsed and Refractory Small Cell Lung Cancer"
+            },
+            {
+              "nct_id": "NCT00312975",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "AstraZeneca",
+              "source_url": "https://clinicaltrials.gov/study/NCT00312975",
+              "title": "Randomized Study Of CP-675,206 or Best Supportive Care Immediately After Platinum-Based Therapy For Non-Small Cell Lung Cancer (NSCLC)"
+            },
+            {
+              "nct_id": "NCT00322452",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "AstraZeneca",
+              "source_url": "https://clinicaltrials.gov/study/NCT00322452",
+              "title": "First Line IRESSA™ Versus Carboplatin/Paclitaxel in Asia"
+            },
+            {
+              "nct_id": "NCT00333294",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "AstraZeneca",
+              "source_url": "https://clinicaltrials.gov/study/NCT00333294",
+              "title": "Phase II Iressa + Irradiation Followed by Chemo in NSCLC"
+            },
+            {
+              "nct_id": "NCT00344773",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "AstraZeneca",
+              "source_url": "https://clinicaltrials.gov/study/NCT00344773",
+              "title": "First-line Treatment for Adenocarcinoma Patients With Epidermal Growth Factor Receptor (EGFR) Mutation"
+            }
+          ]
+        },
+        {
+          "sponsor": "M.D. Anderson Cancer Center",
+          "trial_count": 243,
+          "citations": [
+            {
+              "nct_id": "NCT00003046",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "M.D. Anderson Cancer Center",
+              "source_url": "https://clinicaltrials.gov/study/NCT00003046",
+              "title": "Interleukin-12 in Treating Patients With Cancer in the Abdomen"
+            },
+            {
+              "nct_id": "NCT00003599",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "M.D. Anderson Cancer Center",
+              "source_url": "https://clinicaltrials.gov/study/NCT00003599",
+              "title": "Vitamin E in Preventing the Side Effects of Isotretinoin in Former and Current Smokers Who Are Receiving Isotretinoin to Prevent Lung Cancer"
+            },
+            {
+              "nct_id": "NCT00016367",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "M.D. Anderson Cancer Center",
+              "source_url": "https://clinicaltrials.gov/study/NCT00016367",
+              "title": "Cisplatin and Gemcitabine Plus Trastuzumab in Treating Patients With Stage IIIB or Stage IV Non-Small Cell Lung Cancer"
+            },
+            {
+              "nct_id": "NCT00038597",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "M.D. Anderson Cancer Center",
+              "source_url": "https://clinicaltrials.gov/study/NCT00038597",
+              "title": "Phase II Study of SCH66336, A Farnesyltransferase Inhibitor in Chronic Myelogenous Leukemia (CML)"
+            },
+            {
+              "nct_id": "NCT00043823",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "M.D. Anderson Cancer Center",
+              "source_url": "https://clinicaltrials.gov/study/NCT00043823",
+              "title": "Avastin and Tarceva for Locally Advanced or Metastatic Non-Squamous Non-Small-Cell Lung Cancer"
+            },
+            {
+              "nct_id": "NCT00048087",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "M.D. Anderson Cancer Center",
+              "source_url": "https://clinicaltrials.gov/study/NCT00048087",
+              "title": "Iressa/Docetaxel in Non-Small-Cell Lung Cancer"
+            },
+            {
+              "nct_id": "NCT00059605",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "M.D. Anderson Cancer Center",
+              "source_url": "https://clinicaltrials.gov/study/NCT00059605",
+              "title": "Phase I Study of IV DOTAP: Cholesterol-Fus1 in Non-Small-Cell Lung Cancer"
+            },
+            {
+              "nct_id": "NCT00063258",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "M.D. Anderson Cancer Center",
+              "source_url": "https://clinicaltrials.gov/study/NCT00063258",
+              "title": "Tarceva Surgery for Resectable Stage IIIA(N2) and IIIB (T4 N2) Non-Small-Cell Lung Cancer"
+            },
+            {
+              "nct_id": "NCT00075179",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "M.D. Anderson Cancer Center",
+              "source_url": "https://clinicaltrials.gov/study/NCT00075179",
+              "title": "Natrecor in Pulmonary Hypertension"
+            },
+            {
+              "nct_id": "NCT00078845",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "M.D. Anderson Cancer Center",
+              "source_url": "https://clinicaltrials.gov/study/NCT00078845",
+              "title": "Amifostine in Treating Peripheral Neuropathy Caused by Paclitaxel in Patients With Solid Tumors"
+            },
+            {
+              "nct_id": "NCT00113334",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "M.D. Anderson Cancer Center",
+              "source_url": "https://clinicaltrials.gov/study/NCT00113334",
+              "title": "Study of ABT-510 (Thrombospondin Analogue) in Patients With Advanced Head and Neck Cancer"
+            },
+            {
+              "nct_id": "NCT00254384",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "M.D. Anderson Cancer Center",
+              "source_url": "https://clinicaltrials.gov/study/NCT00254384",
+              "title": "Docetaxel, Cisplatin, and Erlotinib Hydrochloride in Treating Patients With Stage I-III Non-small Cell Lung Cancer Following Surgery"
+            },
+            {
+              "nct_id": "NCT00271505",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "M.D. Anderson Cancer Center",
+              "source_url": "https://clinicaltrials.gov/study/NCT00271505",
+              "title": "Avastin/Docetaxel/Carboplatin in Non-Small Cell Lung Cancer"
+            },
+            {
+              "nct_id": "NCT00290537",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "M.D. Anderson Cancer Center",
+              "source_url": "https://clinicaltrials.gov/study/NCT00290537",
+              "title": "Phase II Study of ZD6474 in Advanced NSCLC"
+            },
+            {
+              "nct_id": "NCT00310115",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "M.D. Anderson Cancer Center",
+              "source_url": "https://clinicaltrials.gov/study/NCT00310115",
+              "title": "Motivational Counseling in Preventing Smoking Relapse After Pregnancy in Pregnant Women Who Quit Smoking During Pregnancy"
+            },
+            {
+              "nct_id": "NCT00310141",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "M.D. Anderson Cancer Center",
+              "source_url": "https://clinicaltrials.gov/study/NCT00310141",
+              "title": "Computer-Assisted Counseling in Helping African American Smokers Stop Smoking"
+            },
+            {
+              "nct_id": "NCT00323557",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "M.D. Anderson Cancer Center",
+              "source_url": "https://clinicaltrials.gov/study/NCT00323557",
+              "title": "Immuno-Augmentation With GM-CSF of Pneumococcal Vaccine in Chronic Lymphocytic Leukemia Patients"
+            },
+            {
+              "nct_id": "NCT00346801",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "M.D. Anderson Cancer Center",
+              "source_url": "https://clinicaltrials.gov/study/NCT00346801",
+              "title": "CPT-11/Cisplatin and Celecoxib With Radiation Therapy for Patients With Unresectable Non-Small Cell Lung Cancer (NSCLC)"
+            },
+            {
+              "nct_id": "NCT00351988",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "M.D. Anderson Cancer Center",
+              "source_url": "https://clinicaltrials.gov/study/NCT00351988",
+              "title": "Effects of Cancer Symptoms on Caregivers"
+            },
+            {
+              "nct_id": "NCT00352391",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "M.D. Anderson Cancer Center",
+              "source_url": "https://clinicaltrials.gov/study/NCT00352391",
+              "title": "Vanguard Study for Head and Neck Cancer or Non-Small Cell Lung Cancer (NSCLC) Patients"
+            }
+          ]
+        },
+        {
+          "sponsor": "Memorial Sloan Kettering Cancer Center",
+          "trial_count": 187,
+          "citations": [
+            {
+              "nct_id": "NCT00002484",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "Memorial Sloan Kettering Cancer Center",
+              "source_url": "https://clinicaltrials.gov/study/NCT00002484",
+              "title": "Radiation Therapy Using 3-Dimensional Treatment Planning in Patients With Non-small Cell Lung Cancer"
+            },
+            {
+              "nct_id": "NCT00002930",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "Memorial Sloan Kettering Cancer Center",
+              "source_url": "https://clinicaltrials.gov/study/NCT00002930",
+              "title": "PET Scan in Patients With Lung and Esophageal Cancers That May Be Removed by Surgery"
+            },
+            {
+              "nct_id": "NCT00003022",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "Memorial Sloan Kettering Cancer Center",
+              "source_url": "https://clinicaltrials.gov/study/NCT00003022",
+              "title": "Monoclonal Antibody Therapy in Treating Patients With Leptomeningeal Cancer"
+            },
+            {
+              "nct_id": "NCT00003037",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "Memorial Sloan Kettering Cancer Center",
+              "source_url": "https://clinicaltrials.gov/study/NCT00003037",
+              "title": "Combination Chemotherapy as Induction Therapy in Treating Patients With Stage III Non-small Cell Lung Cancer"
+            },
+            {
+              "nct_id": "NCT00003103",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "Memorial Sloan Kettering Cancer Center",
+              "source_url": "https://clinicaltrials.gov/study/NCT00003103",
+              "title": "Chemotherapy in Treating Patients With Solid Tumors"
+            },
+            {
+              "nct_id": "NCT00004065",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "Memorial Sloan Kettering Cancer Center",
+              "source_url": "https://clinicaltrials.gov/study/NCT00004065",
+              "title": "Chemotherapy in Treating Patients With Refractory Advanced Solid Tumors or Hematologic Cancer"
+            },
+            {
+              "nct_id": "NCT00004238",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "Memorial Sloan Kettering Cancer Center",
+              "source_url": "https://clinicaltrials.gov/study/NCT00004238",
+              "title": "10-Propargyl-10-Deazaaminopterin in Treating Patients With Stage IIIB or Stage IV Non-small Cell Lung Cancer"
+            },
+            {
+              "nct_id": "NCT00004249",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "Memorial Sloan Kettering Cancer Center",
+              "source_url": "https://clinicaltrials.gov/study/NCT00004249",
+              "title": "Vaccine Therapy Plus QS21 in Treating Patients With Small Cell Lung Cancer That Has Responded to Initial Therapy"
+            },
+            {
+              "nct_id": "NCT00004930",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "Memorial Sloan Kettering Cancer Center",
+              "source_url": "https://clinicaltrials.gov/study/NCT00004930",
+              "title": "Inhaled Doxorubicin in Treating Patients With Primary Lung Cancer or Lung Metastases"
+            },
+            {
+              "nct_id": "NCT00005630",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "Memorial Sloan Kettering Cancer Center",
+              "source_url": "https://clinicaltrials.gov/study/NCT00005630",
+              "title": "Vaccine Therapy and Sargramostim in Treating Patients With Non-small Cell Lung Cancer"
+            },
+            {
+              "nct_id": "NCT00005636",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "Memorial Sloan Kettering Cancer Center",
+              "source_url": "https://clinicaltrials.gov/study/NCT00005636",
+              "title": "Cisplatin With or Without Pemetrexed Disodium in Treating Patients With Malignant Mesothelioma of the Pleura That Cannot be Removed by Surgery"
+            },
+            {
+              "nct_id": "NCT00005806",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "Memorial Sloan Kettering Cancer Center",
+              "source_url": "https://clinicaltrials.gov/study/NCT00005806",
+              "title": "Combination Chemotherapy in Treating Patients With Advanced Non-Small Cell Lung Cancer"
+            },
+            {
+              "nct_id": "NCT00006019",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "Memorial Sloan Kettering Cancer Center",
+              "source_url": "https://clinicaltrials.gov/study/NCT00006019",
+              "title": "Phenylbutyrate Plus Azacitidine in Treating Patients With Acute Myeloid Leukemia, Myelodysplasia, Non-Hodgkin's Lymphoma, Multiple Myeloma, Non-small Cell Lung Cancer, or Prostate Cancer"
+            },
+            {
+              "nct_id": "NCT00008255",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "Memorial Sloan Kettering Cancer Center",
+              "source_url": "https://clinicaltrials.gov/study/NCT00008255",
+              "title": "INS316 in Diagnosing Lung Cancer in Patients With Untreated Lung Cancer"
+            },
+            {
+              "nct_id": "NCT00027638",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "Memorial Sloan Kettering Cancer Center",
+              "source_url": "https://clinicaltrials.gov/study/NCT00027638",
+              "title": "Thalidomide in Treating Patients With Metastatic Neuroendocrine Tumors"
+            },
+            {
+              "nct_id": "NCT00036920",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "Memorial Sloan Kettering Cancer Center",
+              "source_url": "https://clinicaltrials.gov/study/NCT00036920",
+              "title": "TLK286 in Treating Patients With Advanced Non-Small Cell Lung Cancer"
+            },
+            {
+              "nct_id": "NCT00045006",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "Memorial Sloan Kettering Cancer Center",
+              "source_url": "https://clinicaltrials.gov/study/NCT00045006",
+              "title": "Suberoylanilide Hydroxamic Acid in Treating Patients With Advanced Cancer"
+            },
+            {
+              "nct_id": "NCT00045604",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "Memorial Sloan Kettering Cancer Center",
+              "source_url": "https://clinicaltrials.gov/study/NCT00045604",
+              "title": "Imatinib Mesylate and Chemotherapy in Treating Patients With Extensive-Stage Small Cell Lung Cancer"
+            },
+            {
+              "nct_id": "NCT00055705",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "Memorial Sloan Kettering Cancer Center",
+              "source_url": "https://clinicaltrials.gov/study/NCT00055705",
+              "title": "PV701 in Treating Patients With Advanced or Recurrent Peritoneal Cancer"
+            },
+            {
+              "nct_id": "NCT00059943",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "Memorial Sloan Kettering Cancer Center",
+              "source_url": "https://clinicaltrials.gov/study/NCT00059943",
+              "title": "Docetaxel in Treating Older Patients With Metastatic Breast, Lung, or Prostate Cancer"
+            }
+          ]
+        },
+        {
+          "sponsor": "Pfizer",
+          "trial_count": 170,
+          "citations": [
+            {
+              "nct_id": "NCT00004199",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "Pfizer",
+              "source_url": "https://clinicaltrials.gov/study/NCT00004199",
+              "title": "Prinomastat and Combination Chemotherapy in Treating Patients With Metastatic or Recurrent Non-small Cell Lung Cancer"
+            },
+            {
+              "nct_id": "NCT00005093",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "Pfizer",
+              "source_url": "https://clinicaltrials.gov/study/NCT00005093",
+              "title": "Gemcitabine With or Without CI-994 in Treating Patients With Advanced Non-small Cell Lung Cancer"
+            },
+            {
+              "nct_id": "NCT00034827",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "Pfizer",
+              "source_url": "https://clinicaltrials.gov/study/NCT00034827",
+              "title": "A Multicenter Phase 2 Study of CI-1040 in Patients With Advanced Nonsmall-Cell Lung, Breast, Colon and Pancreatic Cancer"
+            },
+            {
+              "nct_id": "NCT00034957",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "Pfizer",
+              "source_url": "https://clinicaltrials.gov/study/NCT00034957",
+              "title": "Study of the Efficacy of an Investigational Drug in Adult Patients With Non Small-Cell Lung Cancer (NSCLC)"
+            },
+            {
+              "nct_id": "NCT00043368",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "Pfizer",
+              "source_url": "https://clinicaltrials.gov/study/NCT00043368",
+              "title": "PF-3512676 (CPG 7909) Injection For Patients Who Completed An Oncology Study Using PF-3512676 (CPG 7909)"
+            },
+            {
+              "nct_id": "NCT00050830",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "Pfizer",
+              "source_url": "https://clinicaltrials.gov/study/NCT00050830",
+              "title": "A Phase 2, Randomized, Open-Label Study Of Single Agent CI-1033 In Patients With Advanced Non-Small Cell Lung Cancer"
+            },
+            {
+              "nct_id": "NCT00070629",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "Pfizer",
+              "source_url": "https://clinicaltrials.gov/study/NCT00070629",
+              "title": "CPG 7909 Injection in Non-Small Cell Lung Cancer"
+            },
+            {
+              "nct_id": "NCT00074854",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "Pfizer",
+              "source_url": "https://clinicaltrials.gov/study/NCT00074854",
+              "title": "A Clinical Efficacy Study Of An Oral Tyrosine Kinase Inhibitor Of VEGFR-2 Given In Combination With Chemotherapy"
+            },
+            {
+              "nct_id": "NCT00090701",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "Pfizer",
+              "source_url": "https://clinicaltrials.gov/study/NCT00090701",
+              "title": "A Phase 2, Open-Label, Multicenter Study of the GARFT Inhibitor in Patients With Metastatic Non-Small Cell Lung Cancer"
+            },
+            {
+              "nct_id": "NCT00092001",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "Pfizer",
+              "source_url": "https://clinicaltrials.gov/study/NCT00092001",
+              "title": "Study Of SU011248 In Patients With Metastatic Non-Small Cell Lung Cancer"
+            },
+            {
+              "nct_id": "NCT00094094",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "Pfizer",
+              "source_url": "https://clinicaltrials.gov/study/NCT00094094",
+              "title": "Anti-angiogenesis Agent AG-013736 in Patients With Advanced Non-Small Cell Lung Cancer"
+            },
+            {
+              "nct_id": "NCT00113516",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "Pfizer",
+              "source_url": "https://clinicaltrials.gov/study/NCT00113516",
+              "title": "A Study Of SU011248 As Therapy In Patients With Locally Advanced Or Metastatic Non-Small Cell Lung Cancer"
+            },
+            {
+              "nct_id": "NCT00139711",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "Pfizer",
+              "source_url": "https://clinicaltrials.gov/study/NCT00139711",
+              "title": "Three Combinations Of Docetaxel And Irinotecan For Recurrent Or Metastatic Non Small Cell Lung Cancer"
+            },
+            {
+              "nct_id": "NCT00143455",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "Pfizer",
+              "source_url": "https://clinicaltrials.gov/study/NCT00143455",
+              "title": "Study Of Irinotecan Hydrochloride (Campto(R)) And Cisplatin Versus Etoposide And Cisplatin In Small Cell Lung Cancer"
+            },
+            {
+              "nct_id": "NCT00147537",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "Pfizer",
+              "source_url": "https://clinicaltrials.gov/study/NCT00147537",
+              "title": "Combination Study Of CP-751,871 With Paclitaxel And Carboplatin In Advanced Lung Cancer"
+            },
+            {
+              "nct_id": "NCT00174356",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "Pfizer",
+              "source_url": "https://clinicaltrials.gov/study/NCT00174356",
+              "title": "PH 1 Evaluation Of Oral CI-1033 In Combination With Paclitaxel/ Carboplatin As 1st Line Chemotherapy In NSCLC Patients"
+            },
+            {
+              "nct_id": "NCT00174369",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "Pfizer",
+              "source_url": "https://clinicaltrials.gov/study/NCT00174369",
+              "title": "MEK Inhibitor PD-325901 To Treat Advanced Non-Small Cell Lung Cancer"
+            },
+            {
+              "nct_id": "NCT00254891",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "Pfizer",
+              "source_url": "https://clinicaltrials.gov/study/NCT00254891",
+              "title": "Trial of Paclitaxel/Carboplatin + PF-3512676 vs Paclitaxel/Carboplatin Alone in Patients With Advanced Non-Small Cell Lung Cancer"
+            },
+            {
+              "nct_id": "NCT00254904",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "Pfizer",
+              "source_url": "https://clinicaltrials.gov/study/NCT00254904",
+              "title": "Randomized Trial of Gemcitabine/Cisplatin + PF-3512676 vs Gemcitabine/Cisplatin Alone in Patients With Advanced NSCLC"
+            },
+            {
+              "nct_id": "NCT00265317",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "Pfizer",
+              "source_url": "https://clinicaltrials.gov/study/NCT00265317",
+              "title": "A Study In Patients With Non-Small Cell Lung Cancer Testing If Erlotinib Plus SU011248 (Sunitinib) Is Better Than Erlotinib Alone"
+            }
+          ]
+        },
+        {
+          "sponsor": "Eli Lilly and Company",
+          "trial_count": 168,
+          "citations": [
+            {
+              "nct_id": "NCT00034268",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "Eli Lilly and Company",
+              "source_url": "https://clinicaltrials.gov/study/NCT00034268",
+              "title": "A Phase 3 Trial of LY900003 Plus Gemcitabine and Cisplatin Versus Gemcitabine and Cisplatin in Patients With Advanced, Previously Untreated Non-Small Cell Lung Cancer"
+            },
+            {
+              "nct_id": "NCT00034541",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "Eli Lilly and Company",
+              "source_url": "https://clinicaltrials.gov/study/NCT00034541",
+              "title": "Study of Cetuximab in Combination With Carboplatin-Paclitaxel in Non-Small Cell Lung Cancer"
+            },
+            {
+              "nct_id": "NCT00034606",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "Eli Lilly and Company",
+              "source_url": "https://clinicaltrials.gov/study/NCT00034606",
+              "title": "Comparing 3 Schedules of Alimta Plus Gemzar"
+            },
+            {
+              "nct_id": "NCT00037713",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "Eli Lilly and Company",
+              "source_url": "https://clinicaltrials.gov/study/NCT00037713",
+              "title": "Survival in a Randomized Phase III Trial in Patients With Limited Disease (LD) Small Cell Lung Cancer Vaccinated With Adjuvant BEC2 and BCG"
+            },
+            {
+              "nct_id": "NCT00042679",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "Eli Lilly and Company",
+              "source_url": "https://clinicaltrials.gov/study/NCT00042679",
+              "title": "A Phase 2 Trial of Antisense Nucleotide to PKC-Alpha (LY900003, ISIS 3521) Plus Gemcitabine and Carboplatin in Patients With Advanced, Previously Untreated Non-Small Cell Lung Cancer."
+            },
+            {
+              "nct_id": "NCT00051493",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "Eli Lilly and Company",
+              "source_url": "https://clinicaltrials.gov/study/NCT00051493",
+              "title": "ALIMTA Plus Carboplatin as Front-Line Chemotherapy for Patients With Locally Advanced or Metastatic Non-Small Cell Lung Cancer: A Phase 2 Clinical Trial."
+            },
+            {
+              "nct_id": "NCT00051506",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "Eli Lilly and Company",
+              "source_url": "https://clinicaltrials.gov/study/NCT00051506",
+              "title": "ALIMTA(Pemetrexed)/Cisplatin and ALIMTA(Pemetrexed)/Carboplatin in Extensive Stage Small Cell Lung Cancer."
+            },
+            {
+              "nct_id": "NCT00061451",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "Eli Lilly and Company",
+              "source_url": "https://clinicaltrials.gov/study/NCT00061451",
+              "title": "Pemetrexed Plus Gemcitabine as Front-Line Chemotherapy for Patients With Locally Advanced or Metastatic Non-Small Cell Lung Cancer: A Clinical Trial"
+            },
+            {
+              "nct_id": "NCT00061464",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "Eli Lilly and Company",
+              "source_url": "https://clinicaltrials.gov/study/NCT00061464",
+              "title": "Pemetrexed Plus Gemcitabine for Patients With Locally Advanced or Metastatic NSCLC Who Have Not Had Previous Chemotherapy."
+            },
+            {
+              "nct_id": "NCT00063388",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "Eli Lilly and Company",
+              "source_url": "https://clinicaltrials.gov/study/NCT00063388",
+              "title": "Phase II Study in Patients With Recurrent Non-Small-Cell Lung Cancer"
+            },
+            {
+              "nct_id": "NCT00069875",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "Eli Lilly and Company",
+              "source_url": "https://clinicaltrials.gov/study/NCT00069875",
+              "title": "A Study With Gemcitabine, Cisplatin, and LY293111 in Non-Small Cell Lung Cancer"
+            },
+            {
+              "nct_id": "NCT00071136",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "Eli Lilly and Company",
+              "source_url": "https://clinicaltrials.gov/study/NCT00071136",
+              "title": "Pemetrexed and Gemcitabine in Patients With Advanced Non-Small Cell Lung Cancer (NSCLC)"
+            },
+            {
+              "nct_id": "NCT00078260",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "Eli Lilly and Company",
+              "source_url": "https://clinicaltrials.gov/study/NCT00078260",
+              "title": "A Comparison of Two Doses of Pemetrexed in Patients Who Have Lung Cancer"
+            },
+            {
+              "nct_id": "NCT00087711",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "Eli Lilly and Company",
+              "source_url": "https://clinicaltrials.gov/study/NCT00087711",
+              "title": "A Randomized Phase 3 Trial of Pemetrexed and Cisplatin Versus Gemcitabine and Cisplatin in Patients With Locally Advanced or Metastatic Non Small Cell Lung Cancer"
+            },
+            {
+              "nct_id": "NCT00095199",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "Eli Lilly and Company",
+              "source_url": "https://clinicaltrials.gov/study/NCT00095199",
+              "title": "Docetaxel or Pemetrexed With or Without Cetuximab in Patients With Recurrent or Progressive Non-Small Cell Lung Cancer"
+            },
+            {
+              "nct_id": "NCT00097214",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "Eli Lilly and Company",
+              "source_url": "https://clinicaltrials.gov/study/NCT00097214",
+              "title": "Carboplatin Plus Cetuximab for Treatment of Stage IIIB/IV Non-Small Cell Lung Cancer (NSCLC)"
+            },
+            {
+              "nct_id": "NCT00097227",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "Eli Lilly and Company",
+              "source_url": "https://clinicaltrials.gov/study/NCT00097227",
+              "title": "Trial of Carboplatin/Paclitaxel/Cetuximab in Stage IIIB/IV Non-Small Cell Lung Cancer (NSCLC)"
+            },
+            {
+              "nct_id": "NCT00102804",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "Eli Lilly and Company",
+              "source_url": "https://clinicaltrials.gov/study/NCT00102804",
+              "title": "Pemetrexed and Best Supportive Care Versus Placebo and Best Supportive Care in Non-Small Cell Lung Cancer (NSCLC)"
+            },
+            {
+              "nct_id": "NCT00105092",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "Eli Lilly and Company",
+              "source_url": "https://clinicaltrials.gov/study/NCT00105092",
+              "title": "Enzastaurin as Second and Third-Line Treatment for Non-Small Cell Lung Cancer."
+            },
+            {
+              "nct_id": "NCT00112294",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "Eli Lilly and Company",
+              "source_url": "https://clinicaltrials.gov/study/NCT00112294",
+              "title": "Study of Taxane/Carboplatin +/- Cetuximab as First-Line Treatment for Patients With Advanced/Metastatic Non-Small Cell Lung Cancer"
+            }
+          ]
+        },
+        {
+          "sponsor": "Hoffmann-La Roche",
+          "trial_count": 162,
+          "citations": [
+            {
+              "nct_id": "NCT00327535",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "Hoffmann-La Roche",
+              "source_url": "https://clinicaltrials.gov/study/NCT00327535",
+              "title": "A Study of Mircera in Anemic Patients With Non-Small Cell Lung Cancer Receiving First Line Chemotherapy."
+            },
+            {
+              "nct_id": "NCT00404703",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "Hoffmann-La Roche",
+              "source_url": "https://clinicaltrials.gov/study/NCT00404703",
+              "title": "A Study of Avastin (Bevacizumab) in Combination With Platinum-Based Chemotherapy in Patients With Advanced or Recurrent Squamous Non-Small Cell Lung Cancer"
+            },
+            {
+              "nct_id": "NCT00451906",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "Hoffmann-La Roche",
+              "source_url": "https://clinicaltrials.gov/study/NCT00451906",
+              "title": "A Study of Avastin (Bevacizumab) in Combination With Platinum-Containing Chemotherapy in Patients With Advanced or Recurrent Non-Squamous Cell Lung Cancer."
+            },
+            {
+              "nct_id": "NCT00518011",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "Hoffmann-La Roche",
+              "source_url": "https://clinicaltrials.gov/study/NCT00518011",
+              "title": "A Study of Tarceva (Erlotinib) and Gemcitabine in Treatment-Naive Patients With Advanced Non-Small Cell Lung Cancer."
+            },
+            {
+              "nct_id": "NCT00531934",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "Hoffmann-La Roche",
+              "source_url": "https://clinicaltrials.gov/study/NCT00531934",
+              "title": "A Study of Management of Tarceva - Induced Rash in Patients With Non-Small Cell Lung Cancer."
+            },
+            {
+              "nct_id": "NCT00531960",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "Hoffmann-La Roche",
+              "source_url": "https://clinicaltrials.gov/study/NCT00531960",
+              "title": "A Study of Tarceva (Erlotinib) in Combination With Avastin (Bevacizumab) in Patients With Advanced Non-Small Cell Lung Cancer."
+            },
+            {
+              "nct_id": "NCT00556322",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "Hoffmann-La Roche",
+              "source_url": "https://clinicaltrials.gov/study/NCT00556322",
+              "title": "A Study of Tarceva (Erlotinib) and Standard of Care Chemotherapy in Patients With Advanced, Recurrent, or Metastatic Non-Small Cell Lung Cancer (NSCLC)"
+            },
+            {
+              "nct_id": "NCT00556712",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "Hoffmann-La Roche",
+              "source_url": "https://clinicaltrials.gov/study/NCT00556712",
+              "title": "A Study of Tarceva (Erlotinib) Following Platinum-Based Chemotherapy in Patients With Advanced, Recurrent, or Metastatic Non-Small Cell Lung Cancer (NSCLC)"
+            },
+            {
+              "nct_id": "NCT00642473",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "Hoffmann-La Roche",
+              "source_url": "https://clinicaltrials.gov/study/NCT00642473",
+              "title": "A Study of Metronidazole Cream in the Prevention and Treatment of Tarceva (Erlotinib)-Associated Rash"
+            },
+            {
+              "nct_id": "NCT00642824",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "Hoffmann-La Roche",
+              "source_url": "https://clinicaltrials.gov/study/NCT00642824",
+              "title": "A Genetic Substudy Associated With the Avastin (Bevacizumab) Study MO19390 in Patients With Advanced or Recurrent Non-Squamous Cell Lung Cancer."
+            },
+            {
+              "nct_id": "NCT00661778",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "Hoffmann-La Roche",
+              "source_url": "https://clinicaltrials.gov/study/NCT00661778",
+              "title": "A Study of Avastin (Bevacizumab) in Combination With Docetaxel and Cisplatin in Patients With Metastatic or Locally Advanced Non-small Cell Lung Cancer"
+            },
+            {
+              "nct_id": "NCT00700180",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "Hoffmann-La Roche",
+              "source_url": "https://clinicaltrials.gov/study/NCT00700180",
+              "title": "A Study of Avastin (Bevacizumab) in Combination With Carboplatin-Based Chemotherapy in Patients With Advanced or Recurrent Non-Squamous Non-Small Cell Lung Cancer."
+            },
+            {
+              "nct_id": "NCT00701558",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "Hoffmann-La Roche",
+              "source_url": "https://clinicaltrials.gov/study/NCT00701558",
+              "title": "A Study of First Line Treatment With Tarceva (Erlotinib) in Combination With Gemcitabine in Patients With Unresectable Advanced and/or Metastatic Non-Small Cell Lung Cancer"
+            },
+            {
+              "nct_id": "NCT00718315",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "Hoffmann-La Roche",
+              "source_url": "https://clinicaltrials.gov/study/NCT00718315",
+              "title": "A Study of Verutex (Fusidic Acid), Eritex (Erythromycin) and Fisiogel in the Management of Tarceva-Associated Rash."
+            },
+            {
+              "nct_id": "NCT00760929",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "Hoffmann-La Roche",
+              "source_url": "https://clinicaltrials.gov/study/NCT00760929",
+              "title": "A Study of the Effect of R1507 in Combination With Tarceva (Erlotinib) on Progression-Free Survival in Patients With Stage IIIb/IV Non-Small Cell Lung Cancer (NSCLC)."
+            },
+            {
+              "nct_id": "NCT00773188",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "Hoffmann-La Roche",
+              "source_url": "https://clinicaltrials.gov/study/NCT00773188",
+              "title": "A Feasibility Trial of Avastin (Bevacizumab) in Combination With Concomitant Chemoradiation (Cisplatin and Vinorelbine) in Patients With Locally Advanced Non-Squamous Non-Small Cell Lung Cancer."
+            },
+            {
+              "nct_id": "NCT00773383",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "Hoffmann-La Roche",
+              "source_url": "https://clinicaltrials.gov/study/NCT00773383",
+              "title": "A Study of the Effect of R1507 in Combination With Tarceva (Erlotinib) on Progression-Free Survival in Patients With Stage IIIb/IV Non-Small Cell Lung Cancer (NSCLC) Having Received Tarceva Monotherapy."
+            },
+            {
+              "nct_id": "NCT00776698",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "Hoffmann-La Roche",
+              "source_url": "https://clinicaltrials.gov/study/NCT00776698",
+              "title": "A Study of Avastin (Bevacizumab) in Combination With Thoracic Radiation and Chemotherapy in Patients With Advanced Non-Squamous Non-Small Cell Lung Cancer."
+            },
+            {
+              "nct_id": "NCT00800202",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "Hoffmann-La Roche",
+              "source_url": "https://clinicaltrials.gov/study/NCT00800202",
+              "title": "A Study of Avastin (Bevacizumab) in Patients With Non-Squamous Non-Small Cell Lung Cancer With Asymptomatic Untreated Brain Metastasis"
+            },
+            {
+              "nct_id": "NCT00806923",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "Hoffmann-La Roche",
+              "source_url": "https://clinicaltrials.gov/study/NCT00806923",
+              "title": "A Study of Avastin (Bevacizumab) in Patients With Non-Squamous Non-Small Cell Lung Cancer (NSCLC)"
+            }
+          ]
+        },
+        {
+          "sponsor": "Sun Yat-sen University",
+          "trial_count": 149,
+          "citations": [
+            {
+              "nct_id": "NCT00762346",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "Sun Yat-sen University",
+              "source_url": "https://clinicaltrials.gov/study/NCT00762346",
+              "title": "Efficacy and Safety Study of ZOMETA® in Treatment of High-level NTX Non Small Cell Lung Cancer With Bone Metastasis"
+            },
+            {
+              "nct_id": "NCT00765687",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "Sun Yat-sen University",
+              "source_url": "https://clinicaltrials.gov/study/NCT00765687",
+              "title": "Screening Non Small Cell Lung Cancer With Bone Metastasis and Efficacy and Safety Research of Receiving Bisphosphonates"
+            },
+            {
+              "nct_id": "NCT00816868",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "Sun Yat-sen University",
+              "source_url": "https://clinicaltrials.gov/study/NCT00816868",
+              "title": "A Phase II Study of TX Regimen as First-line Treatment for Asian Elderly Patients With Advanced Adenocarcinoma of Lung"
+            },
+            {
+              "nct_id": "NCT01017679",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "Sun Yat-sen University",
+              "source_url": "https://clinicaltrials.gov/study/NCT01017679",
+              "title": "Gefitinib 500mg Versus 250mg in Patients With NSCLC With Stable Disease After a Month Treatment of Gefitinib 250mg"
+            },
+            {
+              "nct_id": "NCT01102517",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "Sun Yat-sen University",
+              "source_url": "https://clinicaltrials.gov/study/NCT01102517",
+              "title": "A Trial on Video-assisted Thoracoscopic Surgery and Axillary Thoracotomy for Resection of Early-stage Non-small Cell Lung Cancer"
+            },
+            {
+              "nct_id": "NCT01194453",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "Sun Yat-sen University",
+              "source_url": "https://clinicaltrials.gov/study/NCT01194453",
+              "title": "Pemetrexed Plus Cisplatin Versus Gemcitabine Plus Cisplatin for Advanced NSCLC Metastatic Non-small Cell Lung Cancer"
+            },
+            {
+              "nct_id": "NCT01218594",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "Sun Yat-sen University",
+              "source_url": "https://clinicaltrials.gov/study/NCT01218594",
+              "title": "Curative Effect Study of Endostatin Combined With Chemoradiotherapy to Non-small-cell Lung Cancer"
+            },
+            {
+              "nct_id": "NCT01287962",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "Sun Yat-sen University",
+              "source_url": "https://clinicaltrials.gov/study/NCT01287962",
+              "title": "Apatinib in the Treatment of Advanced Non-squamous Non-small Cell Lung Cancer"
+            },
+            {
+              "nct_id": "NCT01347424",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "Sun Yat-sen University",
+              "source_url": "https://clinicaltrials.gov/study/NCT01347424",
+              "title": "Evaluating Endostatin Plus TC Regimen in Secondary Malignant Neoplasm of Liver Using Contrast Enhancement Ultrasonography"
+            },
+            {
+              "nct_id": "NCT01528488",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "Sun Yat-sen University",
+              "source_url": "https://clinicaltrials.gov/study/NCT01528488",
+              "title": "Prophylactic EVOZAC® Calming Skin Spray for EGFR-TKIs Associated Rash Eruption in NSCLC"
+            },
+            {
+              "nct_id": "NCT01533727",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "Sun Yat-sen University",
+              "source_url": "https://clinicaltrials.gov/study/NCT01533727",
+              "title": "CIK Cell Transfusion Plus Chemotherapy as Adjuvant Therapy for Stage IB-IIIA Non-Small Cell Lung Cancer (NSCLC)"
+            },
+            {
+              "nct_id": "NCT01882621",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "Sun Yat-sen University",
+              "source_url": "https://clinicaltrials.gov/study/NCT01882621",
+              "title": "Monosialoganglioside(GM1) Preventing Neurotoxicity Induced by Cisplatin Contained Chemotherapy in NSCLC Patients"
+            },
+            {
+              "nct_id": "NCT01891123",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "Sun Yat-sen University",
+              "source_url": "https://clinicaltrials.gov/study/NCT01891123",
+              "title": "Explore the Individual Treatment of Docetaxel and Paclitaxel in NSCLC, NPC and BRC by PK-guided Dosing Strategy"
+            },
+            {
+              "nct_id": "NCT01914120",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "Sun Yat-sen University",
+              "source_url": "https://clinicaltrials.gov/study/NCT01914120",
+              "title": "the Quality of Life Assessment of Lung Cancer Patients in China"
+            },
+            {
+              "nct_id": "NCT01951469",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "Sun Yat-sen University",
+              "source_url": "https://clinicaltrials.gov/study/NCT01951469",
+              "title": "Gefitinib With or Without Chemotherapy in Brain Metastases From Non-small Cell Lung Cancer"
+            },
+            {
+              "nct_id": "NCT01951482",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "Sun Yat-sen University",
+              "source_url": "https://clinicaltrials.gov/study/NCT01951482",
+              "title": "Pemetrexed/Platinum With or Without Bevacizumab in Brain Metastases From Patients With EGFR/ALK Negative Non-Squamous Non-small Cell Lung Cancer"
+            },
+            {
+              "nct_id": "NCT01955421",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "Sun Yat-sen University",
+              "source_url": "https://clinicaltrials.gov/study/NCT01955421",
+              "title": "Erlotinib 100mg qd Versus Gefitinib 250mg qd for EGFR Mutant Nsclc"
+            },
+            {
+              "nct_id": "NCT01994057",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "Sun Yat-sen University",
+              "source_url": "https://clinicaltrials.gov/study/NCT01994057",
+              "title": "A Retrospective Study of EGFR-TKIs,Gefitinib, Erlotinib and Osimertinib in NSCLC Patients Treatment"
+            },
+            {
+              "nct_id": "NCT01996098",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "Sun Yat-sen University",
+              "source_url": "https://clinicaltrials.gov/study/NCT01996098",
+              "title": "Icotinib Following Chemotherapy Versus Chemotherapy as Adjuvant Therapy in Stage IIA-IIIA NSCLC With EGFR Mutation"
+            },
+            {
+              "nct_id": "NCT02066038",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "Sun Yat-sen University",
+              "source_url": "https://clinicaltrials.gov/study/NCT02066038",
+              "title": "Intermittent and Maintenance of Erlotinib in Combination With Pemetrexed/Carboplatin in Ⅲb/IV Non Small Cell Lung Cancer With Epidermal Growth Factor Receptor (EGFR) Mutation"
+            }
+          ]
+        },
+        {
+          "sponsor": "Novartis Pharmaceuticals",
+          "trial_count": 134,
+          "citations": [
+            {
+              "nct_id": "NCT00006368",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "Novartis Pharmaceuticals",
+              "source_url": "https://clinicaltrials.gov/study/NCT00006368",
+              "title": "Yttrium Y 90 SMT 487 in Treating Patients With Refractory or Recurrent Cancer"
+            },
+            {
+              "nct_id": "NCT00006370",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "Novartis Pharmaceuticals",
+              "source_url": "https://clinicaltrials.gov/study/NCT00006370",
+              "title": "Radiolabeled SMT-487 (Yttrium Y 90-DOTA-tyr3-octreotide) in Treating Patients With Refractory Small Cell Lung Cancer or Metastatic Breast Cancer"
+            },
+            {
+              "nct_id": "NCT00086268",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "Novartis Pharmaceuticals",
+              "source_url": "https://clinicaltrials.gov/study/NCT00086268",
+              "title": "Non-small Cell Lung Cancer Study US75 (Z-PACT)"
+            },
+            {
+              "nct_id": "NCT00099541",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "Novartis Pharmaceuticals",
+              "source_url": "https://clinicaltrials.gov/study/NCT00099541",
+              "title": "Non-small Cell Lung Cancer Registry"
+            },
+            {
+              "nct_id": "NCT00124280",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "Novartis Pharmaceuticals",
+              "source_url": "https://clinicaltrials.gov/study/NCT00124280",
+              "title": "Study Investigating the Effect of Everolimus Monotherapy in Patients With Advanced Non-small Cell Lung Cancer (NSCLC)"
+            },
+            {
+              "nct_id": "NCT00154388",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "Novartis Pharmaceuticals",
+              "source_url": "https://clinicaltrials.gov/study/NCT00154388",
+              "title": "Phase II Study of Imatinib Mesylate in Patients With Life Threatening Malignant Rare Diseases"
+            },
+            {
+              "nct_id": "NCT00171834",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "Novartis Pharmaceuticals",
+              "source_url": "https://clinicaltrials.gov/study/NCT00171834",
+              "title": "Dose Escalating Study of the Safety and Efficacy of Patupilone, q3w, in Patients With Non-small Cell Lung Cancer"
+            },
+            {
+              "nct_id": "NCT00171912",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "Novartis Pharmaceuticals",
+              "source_url": "https://clinicaltrials.gov/study/NCT00171912",
+              "title": "Imatinib Mesylate in Patients With Various Types of Malignancies Involving Activated Tyrosine Kinase Enzymes"
+            },
+            {
+              "nct_id": "NCT00172042",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "Novartis Pharmaceuticals",
+              "source_url": "https://clinicaltrials.gov/study/NCT00172042",
+              "title": "A Study to Evaluate the Safety and Efficacy of Zoledronic Acid in the Prevention or Delaying of Bone Metastasis in Patients With Stage IIIA and IIIB Non-small Cell Lung Cancer (NSCLC)"
+            },
+            {
+              "nct_id": "NCT00219297",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "Novartis Pharmaceuticals",
+              "source_url": "https://clinicaltrials.gov/study/NCT00219297",
+              "title": "Study of Patupilone in Patients With Brain Metastasis From Non-small Cell Lung Cancer"
+            },
+            {
+              "nct_id": "NCT00434174",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "Novartis Pharmaceuticals",
+              "source_url": "https://clinicaltrials.gov/study/NCT00434174",
+              "title": "Safety of Everolimus and Pemetrexed in Lung Cancer Patients"
+            },
+            {
+              "nct_id": "NCT00456833",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "Novartis Pharmaceuticals",
+              "source_url": "https://clinicaltrials.gov/study/NCT00456833",
+              "title": "Combination of RAD001 and Erlotinib in Patients With Advanced Non Small Cell Lung Cancer Previously Treated Only With Chemotherapy"
+            },
+            {
+              "nct_id": "NCT00457119",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "Novartis Pharmaceuticals",
+              "source_url": "https://clinicaltrials.gov/study/NCT00457119",
+              "title": "Combination of RAD001 With Carboplatin, Paclitaxel and Bevacizumab in Non-small-cell Lung Cancer (NSCLC) Patients"
+            },
+            {
+              "nct_id": "NCT00466466",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "Novartis Pharmaceuticals",
+              "source_url": "https://clinicaltrials.gov/study/NCT00466466",
+              "title": "Safety of RAD001 in Combination With Cisplatin and Etoposide in Lung Cancer Patients"
+            },
+            {
+              "nct_id": "NCT00535951",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "Novartis Pharmaceuticals",
+              "source_url": "https://clinicaltrials.gov/study/NCT00535951",
+              "title": "Pharmacokinetic, Safety, and Efficacy Effects of Oral LBH589 on Dextromethorphan in Patients With Advanced or Metastatic Non-Small Cell Lung Cancer or Malignant Pleural Mesothelioma"
+            },
+            {
+              "nct_id": "NCT00662597",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "Novartis Pharmaceuticals",
+              "source_url": "https://clinicaltrials.gov/study/NCT00662597",
+              "title": "ASA404 or Placebo in Combination With Paclitaxel and Carboplatin as First-Line Treatment for Stage IIIb/IV Non-Small Cell Lung Cancer"
+            },
+            {
+              "nct_id": "NCT00674102",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "Novartis Pharmaceuticals",
+              "source_url": "https://clinicaltrials.gov/study/NCT00674102",
+              "title": "An Open-label, Phase I Trial of Intravenous ASA404 Administered in Combination With Paclitaxel and Carboplatin in Japanese Patients With Non-Small Cell Lung Cancer (NSCLC)"
+            },
+            {
+              "nct_id": "NCT00738387",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "Novartis Pharmaceuticals",
+              "source_url": "https://clinicaltrials.gov/study/NCT00738387",
+              "title": "A Study of ASA404 or Placebo in Combination With Docetaxel in Second-line Treatment for (Stage IIIb/IV) Non-small Cell Lung Cancer"
+            },
+            {
+              "nct_id": "NCT00790400",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "Novartis Pharmaceuticals",
+              "source_url": "https://clinicaltrials.gov/study/NCT00790400",
+              "title": "Efficacy and Safety of RAD001 in Patients Aged 18 and Over With Angiomyolipoma Associated With Either Tuberous Sclerosis Complex (TSC) or Sporadic Lymphangioleiomyomatosis (LAM)"
+            },
+            {
+              "nct_id": "NCT00802841",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "Novartis Pharmaceuticals",
+              "source_url": "https://clinicaltrials.gov/study/NCT00802841",
+              "title": "Randomized Phase Lll Study of Imatinib Dose Optimization vs Nilotinib in CML Patients With Suboptimal Response to Imatinib"
+            }
+          ]
+        },
+        {
+          "sponsor": "Bristol-Myers Squibb",
+          "trial_count": 124,
+          "citations": [
+            {
+              "nct_id": "NCT00035152",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "Bristol-Myers Squibb",
+              "source_url": "https://clinicaltrials.gov/study/NCT00035152",
+              "title": "Study Comparing Weekly Taxol and Carboplatin vs Standard Taxol and Carboplatin Regimen for Stage IIIB or IV Non-Small-Cell Lung Cancer"
+            },
+            {
+              "nct_id": "NCT00080509",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "Bristol-Myers Squibb",
+              "source_url": "https://clinicaltrials.gov/study/NCT00080509",
+              "title": "Effectiveness of KOS-862 in the Treatment of Lung Cancer"
+            },
+            {
+              "nct_id": "NCT00099879",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "Bristol-Myers Squibb",
+              "source_url": "https://clinicaltrials.gov/study/NCT00099879",
+              "title": "Study of BMS-275183 in Patients With Pre-treated Non-small Cell Lung Cancer"
+            },
+            {
+              "nct_id": "NCT00103701",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "Bristol-Myers Squibb",
+              "source_url": "https://clinicaltrials.gov/study/NCT00103701",
+              "title": "BMS-354825 in Patients With Chronic Accelerated, or Blast Phase Chronic Myelogenous Leukemia or Philadelphia Positive Acute Lymphoblastic Leukemia"
+            },
+            {
+              "nct_id": "NCT00103831",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "Bristol-Myers Squibb",
+              "source_url": "https://clinicaltrials.gov/study/NCT00103831",
+              "title": "Oral Taxane in Combination With Pemetrexed (Alimta) in Patients With Recurrent Non-Small Cell Lung Cancer"
+            },
+            {
+              "nct_id": "NCT00320255",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "Bristol-Myers Squibb",
+              "source_url": "https://clinicaltrials.gov/study/NCT00320255",
+              "title": "A Phase 2 Pilot Study of Apixaban for the Prevention of Thromboembolic Events in Patients With Advanced (Metastatic) Cancer"
+            },
+            {
+              "nct_id": "NCT00349518",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "Bristol-Myers Squibb",
+              "source_url": "https://clinicaltrials.gov/study/NCT00349518",
+              "title": "Study of Dasatinib in Imatinib Resistant or Intolerant Subjects With Chronic or Advanced Phase CML or Philadelphia Chromosome Positive ALL"
+            },
+            {
+              "nct_id": "NCT00359450",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "Bristol-Myers Squibb",
+              "source_url": "https://clinicaltrials.gov/study/NCT00359450",
+              "title": "Study of BMS-275183 in Patients With Pretreated Locally Advanced or Metastatic NSCLC (Non Small Cell Lung Cancer)"
+            },
+            {
+              "nct_id": "NCT00441337",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "Bristol-Myers Squibb",
+              "source_url": "https://clinicaltrials.gov/study/NCT00441337",
+              "title": "A Study of MDX-1106 in Patients With Selected Refractory or Relapsed Malignancies"
+            },
+            {
+              "nct_id": "NCT00461110",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "Bristol-Myers Squibb",
+              "source_url": "https://clinicaltrials.gov/study/NCT00461110",
+              "title": "A Study of BMS-663513 in Combination With Chemoradiation in Subjects With Non Small Cell Lung Carcinoma (NSCLC)"
+            },
+            {
+              "nct_id": "NCT00527735",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "Bristol-Myers Squibb",
+              "source_url": "https://clinicaltrials.gov/study/NCT00527735",
+              "title": "Phase II Study for Previously Untreated Subjects With Non Small Cell Lung Cancer (NSCLC) or Small Cell Lung Cancer (SCLC)"
+            },
+            {
+              "nct_id": "NCT00633789",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "Bristol-Myers Squibb",
+              "source_url": "https://clinicaltrials.gov/study/NCT00633789",
+              "title": "Phase II Study of Brivanib (BMS-582664) to Treat Multiple Tumor Types"
+            },
+            {
+              "nct_id": "NCT00651508",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "Bristol-Myers Squibb",
+              "source_url": "https://clinicaltrials.gov/study/NCT00651508",
+              "title": "Study to Evaluate KOS-1584 in Patients With Advanced or Metastatic Stage IIIB/IV Non-Small Cell Lung Cancer (NSCLC)"
+            },
+            {
+              "nct_id": "NCT00730639",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "Bristol-Myers Squibb",
+              "source_url": "https://clinicaltrials.gov/study/NCT00730639",
+              "title": "A Phase 1 Study of Nivolumab (BMS-936558) in Subjects With Advanced or Recurrent Malignancies"
+            },
+            {
+              "nct_id": "NCT00743938",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "Bristol-Myers Squibb",
+              "source_url": "https://clinicaltrials.gov/study/NCT00743938",
+              "title": "A Comparison Between BMS-690514 and Erlotinib in Patients Who Were Previously Treated for NSCLC"
+            },
+            {
+              "nct_id": "NCT00850577",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "Bristol-Myers Squibb",
+              "source_url": "https://clinicaltrials.gov/study/NCT00850577",
+              "title": "Ph II of a Novel Anti-angiogenic Agent in Combination With Chemotherapy for the Treatment of Non-Small Cell Lung Cancer"
+            },
+            {
+              "nct_id": "NCT00927875",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "Bristol-Myers Squibb",
+              "source_url": "https://clinicaltrials.gov/study/NCT00927875",
+              "title": "A Study of BMS-833923 With Carboplatin and Etoposide Followed by BMS-833923 Alone in Subjects With Extensive-Stage Small Cell Lung Cancer"
+            },
+            {
+              "nct_id": "NCT01024062",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "Bristol-Myers Squibb",
+              "source_url": "https://clinicaltrials.gov/study/NCT01024062",
+              "title": "Phase II Study of Weekly Paclitaxel (BMS-181339) in Patient With Non-Small Cell Lung Cancer (NSCLC)"
+            },
+            {
+              "nct_id": "NCT01165216",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "Bristol-Myers Squibb",
+              "source_url": "https://clinicaltrials.gov/study/NCT01165216",
+              "title": "Japanese Study of Ipilimumab Administered in Combination With Paclitaxel/Carboplatin in Patients With Nonsmall-cell Lung Cancer"
+            },
+            {
+              "nct_id": "NCT01167244",
+              "field_path": "protocolSection.sponsorCollaboratorsModule.leadSponsor.name",
+              "value": "Bristol-Myers Squibb",
+              "source_url": "https://clinicaltrials.gov/study/NCT01167244",
+              "title": "Trial of BMS-690514 in Non-Small Cell Lung Cancer Subjects Who Have Been Treated With Gefitinib or Erlotinib and Are Genotypically EGFR Mutation Positive or Who Have Had a Prior Response"
+            }
+          ]
+        }
+      ],
+      "metadata": {
+        "description": "ClinicalTrials.gov에서 집계된 폐암 관련 임상시험 후원사별 건수(상위 10). 데이터 필드: sponsor, trial_count.",
+        "sort_order": "내림차순(trial_count)",
+        "unit": "건",
+        "metric": "distinct_nct_id_count",
+        "design_source": "llm",
+        "candidate_chart_types": [
+          "horizontal_bar_chart",
+          "bar_chart"
+        ]
+      }
+    }
+  ],
+  "meta": {
+    "request_id": "4538f04b-5188-44fe-aeee-ceaa75c1ff5f",
+    "audit_log": "logs/agent_runs/2026-08-09.jsonl",
+    "source": "ClinicalTrials.gov",
+    "api_version": "2.0.5",
+    "data_timestamp": "2026-08-07T09:00:05",
+    "retrieved_at": "2026-08-09T06:55:41.452882+00:00",
+    "records_retrieved": 14425,
+    "records_used": 14425,
+    "retrieval": {
+      "requests": [
+        {
+          "query_params": {
+            "format": "json",
+            "pageSize": 1000,
+            "countTotal": "true",
+            "query.cond": "lung cancer"
+          },
+          "fields": [
+            "NCTId",
+            "BriefTitle",
+            "OverallStatus",
+            "StartDate",
+            "Phase",
+            "StudyType",
+            "EnrollmentCount",
+            "Condition",
+            "InterventionName",
+            "InterventionType",
+            "LeadSponsorName",
+            "LeadSponsorClass",
+            "LocationCountry"
+          ],
+          "pages": 15,
+          "retrieved_count": 14425,
+          "total_count": 14425,
+          "truncated": false
+        }
+      ]
+    },
+    "detail_retrieval": {
+      "requested_count": 0,
+      "retrieved_count": 0,
+      "limit": 50,
+      "truncated": false,
+      "nct_ids": [],
+      "strategy": "on_demand"
+    },
+    "agent_trace": [
+      {
+        "step": 1,
+        "action": "create_plan",
+        "status": "success"
+      },
+      {
+        "step": 2,
+        "action": "search_trials",
+        "status": "success",
+        "records": 14425
+      },
+      {
+        "step": 3,
+        "action": "normalize_and_filter",
+        "status": "success",
+        "records": 14425,
+        "excluded": 0
+      },
+      {
+        "step": 4,
+        "action": "aggregate_and_build",
+        "analysis_id": "top_sponsors_lung_cancer",
+        "status": "success"
+      },
+      {
+        "step": 5,
+        "action": "design_visualization",
+        "analysis_id": "top_sponsors_lung_cancer",
+        "status": "success",
+        "chart_type": "horizontal_bar_chart",
+        "design_source": "llm"
+      }
+    ]
+  }
+}

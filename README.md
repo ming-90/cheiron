@@ -178,6 +178,21 @@ curl -X POST http://127.0.0.1:8000/v1/query \
 
 #### Response contract
 
+| Field | Type | Contract |
+|---|---|---|
+| `query` | string | Original natural-language question |
+| `plan` | object | Validated filters, 1–5 analysis tasks, and explicit assumptions |
+| `visualizations` | array | One renderable specification per analysis task |
+| `visualizations[].id` | string | Stable analysis/visualization identifier |
+| `visualizations[].type` | string | One of the supported chart types documented below |
+| `visualizations[].title` | string | Human-readable chart title |
+| `visualizations[].encoding` | object | Field-to-channel mapping using `x`, `y`, optional `series`, or network `nodes`/`edges` |
+| `visualizations[].data` | array | Verified rows, or node/edge objects for a network |
+| `visualizations[].metadata` | object | Metric, display hints, chart candidates, and design source |
+| `meta` | object | Request ID, source/version timestamps, counts, retrieval details, detail policy, and agent trace |
+
+Counts use `distinct_nct_id_count`. Every encoding field must exist in `data`; the backend validates this before returning the response.
+
 ```json
 {
   "query": "Compare the trial phases of Pembrolizumab and Nivolumab.",
@@ -472,6 +487,18 @@ Compare annual observational and interventional study counts.
 Show the full details for NCT01234567.
 ```
 
+## Actual example runs
+
+The repository includes three complete, unedited `response_output` objects captured from successful live runs on August 9, 2026. They satisfy the assignment requirement for 3–5 example queries with the actual JSON produced by the system. Because ClinicalTrials.gov is a live source, later runs may produce different counts.
+
+| Query | Actual output |
+|---|---|
+| Compare the clinical-trial phases of Pembrolizumab and Nivolumab. | [`examples/01-drug-phase-comparison.json`](examples/01-drug-phase-comparison.json) |
+| Show the top 10 countries with the most breast-cancer clinical trials. | [`examples/02-country-ranking.json`](examples/02-country-ranking.json) |
+| Show the top 10 sponsors of lung-cancer clinical trials. | [`examples/03-sponsor-ranking.json`](examples/03-sponsor-ranking.json) |
+
+Each file contains the complete returned plan, visualization specification, data, provenance citations, and retrieval metadata. Per-attempt operational logs remain local under `logs/`.
+
 ## Testing
 
 Run the offline unit suite:
@@ -523,7 +550,7 @@ python3 scripts/smoke_test.py
 
 ## AI-tool usage and integrity note
 
-OpenAI models are used for constrained plan generation and visualization design. The application code deliberately owns validation, API request construction, pagination, data normalization, NCT deduplication, aggregation, citations, and error handling. Correctness is checked through strict Pydantic schemas, semantic validators, mock-based tests, live API smoke tests, monitoring traces, and deterministic fallbacks.
+OpenAI models are used at runtime for constrained plan generation and visualization design. OpenAI Codex was used as an AI-assisted development tool for implementation, review, documentation, and test iteration. The application code deliberately owns validation, API request construction, pagination, data normalization, NCT deduplication, aggregation, citations, and error handling. Correctness is checked through strict Pydantic schemas, semantic validators, mock-based tests, live API smoke tests, monitoring traces, and deterministic fallbacks.
 
 The implementation was iteratively designed, generated, reviewed, tested, and adapted with AI assistance. Engineering decisions—including the separation of planning from calculation, renderer-independent output, bounded retrieval, on-demand detail policy, and audit trace design—are explicit application-level choices rather than unchecked model output.
 

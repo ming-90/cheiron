@@ -178,6 +178,21 @@ curl -X POST http://127.0.0.1:8000/v1/query \
 
 #### 응답 계약
 
+| 필드 | 타입 | 계약 |
+|---|---|---|
+| `query` | string | 원본 자연어 질문 |
+| `plan` | object | 검증된 필터, 1–5개 분석 작업, 명시적 가정 |
+| `visualizations` | array | 분석 작업별 렌더링 가능한 시각화 명세 |
+| `visualizations[].id` | string | 분석 및 시각화 식별자 |
+| `visualizations[].type` | string | 아래에 문서화된 지원 차트 유형 중 하나 |
+| `visualizations[].title` | string | 사람이 읽을 수 있는 차트 제목 |
+| `visualizations[].encoding` | object | `x`, `y`, 선택적 `series` 또는 네트워크 `nodes`/`edges`의 필드 매핑 |
+| `visualizations[].data` | array | 검증된 행 또는 네트워크 노드·엣지 객체 |
+| `visualizations[].metadata` | object | 지표, 표시 힌트, 차트 후보, 설계 출처 |
+| `meta` | object | 요청 ID, 소스·버전 시각, 건수, 조회 정보, 상세 정책, 에이전트 추적 정보 |
+
+집계에는 `distinct_nct_id_count` 지표를 사용합니다. 모든 `encoding` 필드는 `data`에 실제 존재해야 하며 백엔드가 응답 전에 검증합니다.
+
 ```json
 {
   "query": "Pembrolizumab과 Nivolumab 임상시험 단계를 비교해줘.",
@@ -472,6 +487,18 @@ Pembrolizumab과 Nivolumab 임상시험 단계를 비교해줘.
 NCT01234567 연구의 상세 정보를 보여줘.
 ```
 
+## 실제 실행 예시
+
+저장소에는 2026년 8월 9일 성공한 실시간 실행에서 저장한 완전한 `response_output` 객체 3개가 포함되어 있습니다. 이는 과제의 “3–5개 예시 질문과 시스템이 실제 생성한 JSON 출력” 요구사항을 충족합니다. ClinicalTrials.gov는 실시간 데이터 소스이므로 이후 실행에서는 집계값이 달라질 수 있습니다.
+
+| 질문 | 실제 출력 |
+|---|---|
+| Pembrolizumab과 Nivolumab 임상시험 단계를 비교해줘. | [`examples/01-drug-phase-comparison.json`](examples/01-drug-phase-comparison.json) |
+| 유방암 임상시험이 많은 국가 상위 10개를 보여줘. | [`examples/02-country-ranking.json`](examples/02-country-ranking.json) |
+| 폐암 임상시험을 많이 후원한 스폰서 상위 10개를 보여줘. | [`examples/03-sponsor-ranking.json`](examples/03-sponsor-ranking.json) |
+
+각 파일에는 반환된 전체 계획, 시각화 명세, 데이터, 출처 인용, 조회 메타데이터가 포함됩니다. API 시도별 운영 로그는 로컬 `logs/`에만 유지합니다.
+
 ## 테스트
 
 외부 네트워크를 사용하지 않는 단위 테스트:
@@ -523,7 +550,7 @@ python3 scripts/smoke_test.py
 
 ## AI 도구 사용 및 무결성 설명
 
-OpenAI 모델은 제한된 계획 생성과 시각화 설계에 사용합니다. 애플리케이션 코드는 검증, API 요청 구성, 페이지네이션, 데이터 정규화, NCT 중복 제거, 집계, 인용 및 오류 처리를 직접 담당합니다. 정확성은 엄격한 Pydantic 스키마, 의미 검증기, mock 기반 테스트, 실제 API smoke test, 모니터링 trace, 결정형 폴백으로 확인합니다.
+OpenAI 모델은 실행 시 제한된 계획 생성과 시각화 설계에 사용합니다. OpenAI Codex는 구현, 검수, 문서 작성, 테스트 반복을 위한 AI 개발 보조 도구로 사용했습니다. 애플리케이션 코드는 검증, API 요청 구성, 페이지네이션, 데이터 정규화, NCT 중복 제거, 집계, 인용 및 오류 처리를 직접 담당합니다. 정확성은 엄격한 Pydantic 스키마, 의미 검증기, mock 기반 테스트, 실제 API smoke test, 모니터링 trace, 결정형 폴백으로 확인합니다.
 
 구현은 AI의 도움을 받아 반복적으로 설계, 생성, 검토, 테스트 및 수정했습니다. 계획과 계산의 분리, 렌더러 독립 출력, 제한된 조회, on-demand 상세 정책, 감사 trace 설계는 검증되지 않은 모델 출력이 아니라 명시적인 애플리케이션 수준의 설계 결정입니다.
 
