@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="ClinicalTrials.gov Query Agent monitoring dashboard" />
+    <title>Cheiron · Agent Monitor</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <a class="brand" href="/dashboard" aria-label="Cheiron 홈">
+          <span class="brand-mark">C</span>
+          <span><strong>Cheiron</strong><small>Clinical Intelligence</small></span>
+        </a>
+        <nav class="tabs" aria-label="애플리케이션 영역">
+          <button class="tab active" data-tab="user-app" aria-selected="true">User App</button>
+          <button class="tab" data-tab="monitoring" aria-selected="false">Monitoring</button>
+        </nav>
+        <div class="health"><span class="pulse"></span><span>API online</span></div>
+      </header>
+
+      <main>
+        <section id="monitoring" class="view" aria-labelledby="monitor-title">
+          <div class="hero-row">
+            <div>
+              <p class="eyebrow">AGENT OBSERVABILITY</p>
+              <h1 id="monitor-title">Every decision, traceable.</h1>
+              <p class="lede">자연어 계획부터 ClinicalTrials.gov 호출과 최종 데이터까지 한 흐름으로 확인합니다.</p>
+            </div>
+            <div class="controls">
+              <label class="select-wrap">
+                <span class="sr-only">상태 필터</span>
+                <select id="status-filter">
+                  <option value="">All statuses</option>
+                  <option value="success">Success</option>
+                  <option value="error">Error</option>
+                </select>
+              </label>
+              <button id="refresh" class="refresh-button"><span>↻</span> Refresh</button>
+            </div>
+          </div>
+
+          <div class="metrics" aria-label="실행 지표">
+            <article class="metric-card accent">
+              <span class="metric-label">Agent runs</span>
+              <strong id="total-runs">—</strong>
+              <small>최근 조회 범위</small>
+            </article>
+            <article class="metric-card">
+              <span class="metric-label">Success rate</span>
+              <strong id="success-rate">—</strong>
+              <div class="meter"><i id="success-meter"></i></div>
+            </article>
+            <article class="metric-card">
+              <span class="metric-label">API calls</span>
+              <strong id="api-calls">—</strong>
+              <small>ClinicalTrials.gov</small>
+            </article>
+            <article class="metric-card">
+              <span class="metric-label">Avg. API time</span>
+              <strong id="avg-duration">—</strong>
+              <small>호출 시간 합계 기준</small>
+            </article>
+          </div>
+
+          <section class="runs-panel">
+            <div class="panel-heading">
+              <div><h2>Recent agent runs</h2><p>실행을 선택하면 계획과 API 응답을 볼 수 있습니다.</p></div>
+              <span id="last-updated" class="updated">Not synced</span>
+            </div>
+            <div class="table-wrap">
+              <table>
+                <thead><tr><th>Status</th><th>User question</th><th>Request parameters</th><th>Started</th><th>API calls</th><th>Records</th><th>Time</th><th></th></tr></thead>
+                <tbody id="runs-body"></tbody>
+              </table>
+              <div id="empty-state" class="empty-state" hidden>
+                <span class="empty-glyph">⌁</span><h3>No runs yet</h3><p>첫 질의를 보내면 여기에 실행 기록이 표시됩니다.</p>
+              </div>
+            </div>
+          </section>
+        </section>
+
+        <section id="user-app" class="view user-workspace active" aria-labelledby="user-title">
+          <div class="query-hero">
+            <p class="eyebrow">CLINICALTRIALS.GOV AGENT</p>
+            <h1 id="user-title">Ask a clinical question.<br />See the evidence.</h1>
+            <p class="lede">자연어 질문을 검색 계획과 검증된 집계 데이터로 변환하고, 적합한 차트를 자동으로 선택합니다.</p>
+            <form id="query-form" class="query-form">
+              <label for="query-input" class="sr-only">임상시험 질문</label>
+              <textarea id="query-input" rows="3" required minlength="3" maxlength="2000" placeholder="예: 2018년 이후 폐암 임상시험 수가 연도별로 어떻게 변했어?"></textarea>
+              <div class="query-actions">
+                <label class="citation-toggle"><input id="include-citations" type="checkbox" checked /><span>원본 연구 인용 포함</span></label>
+                <button id="ask-button" type="submit">분석하기 <span>↗</span></button>
+              </div>
+            </form>
+            <div class="example-queries" aria-label="예시 질문">
+              <button type="button">폐암 임상시험을 단계별로 보여줘</button>
+              <button type="button">2018년 이후 면역항암제 시험의 연도별 추세를 보여줘</button>
+              <button type="button">폐암 연구의 스폰서와 약물 관계를 네트워크로 보여줘</button>
+            </div>
+          </div>
+
+          <div id="query-status" class="query-status" hidden></div>
+          <section id="query-results" class="query-results" hidden>
+            <div class="results-heading">
+              <div><p class="eyebrow">VERIFIED OUTPUT</p><h2 id="result-title">분석 결과</h2></div>
+              <div id="result-meta" class="result-meta"></div>
+            </div>
+            <div id="visualizations" class="visualization-grid"></div>
+            <details class="json-output"><summary>프론트엔드 JSON 보기</summary><pre id="result-json"></pre></details>
+          </section>
+        </section>
+      </main>
+    </div>
+
+    <div id="drawer-backdrop" class="drawer-backdrop" hidden></div>
+    <aside id="drawer" class="drawer" aria-hidden="true" aria-labelledby="drawer-title">
+      <div class="drawer-head">
+        <div><span class="eyebrow">RUN INSPECTOR</span><h2 id="drawer-title">Execution detail</h2></div>
+        <button id="close-drawer" class="icon-button" aria-label="상세 닫기">×</button>
+      </div>
+      <div id="drawer-content" class="drawer-content"></div>
+    </aside>
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.6.0/dist/echarts.min.js" defer></script>
+    <script src="/static/app.js" defer></script>
+  </body>
+</html>

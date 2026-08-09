@@ -1,0 +1,26 @@
+# Local secrets
+.env
+.env.*
+!.env.example
+
+# Python artifacts
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+htmlcov/
+.venv/
+venv/
+
+# Runtime data
+logs/
+
+# Assignment source materials (local only)
+assignment_materials/
+
+# Editor and OS files
+.DS_Store
+.idea/
+.vscode/
+*.swp
+
