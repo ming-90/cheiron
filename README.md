@@ -191,7 +191,7 @@ curl -X POST http://127.0.0.1:8000/v1/query \
 | `visualizations[].metadata` | object | Metric, display hints, chart candidates, and design source |
 | `meta` | object | Request ID, source/version timestamps, counts, retrieval details, detail policy, and agent trace |
 
-Counts use `distinct_nct_id_count`. Every encoding field must exist in `data`; the backend validates this before returning the response.
+Counts use `distinct_nct_id_count`. Every encoding field must exist in `data`; the backend validates this before returning the response. The generated OpenAPI schema exposes separate `TabularDatum`, `NetworkDatum`, `NetworkNode`, `NetworkEdge`, `VisualizationEncoding`, and `ResponseMetadata` contracts instead of an unbounded data object.
 
 ```json
 {
@@ -234,13 +234,25 @@ Counts use `distinct_nct_id_count`. Every encoding field must exist in `data`; t
           "intervention": "Pembrolizumab",
           "phase": "PHASE2",
           "trial_count": 120,
+          "source_count": 120,
+          "citations_truncated": true,
           "citations": [
             {
               "nct_id": "NCT01234567",
               "field_path": "protocolSection.designModule.phases",
               "value": "PHASE2",
               "source_url": "https://clinicaltrials.gov/study/NCT01234567",
-              "title": "Example study"
+              "title": "Example study",
+              "evidence": [
+                {
+                  "field_path": "protocolSection.armsInterventionsModule.interventions.name",
+                  "value": "Pembrolizumab"
+                },
+                {
+                  "field_path": "protocolSection.designModule.phases",
+                  "value": "PHASE2"
+                }
+              ]
             }
           ]
         }
@@ -254,13 +266,22 @@ Counts use `distinct_nct_id_count`. Every encoding field must exist in `data`; t
   ],
   "meta": {
     "request_id": "uuid",
+    "audit_log": "logs/agent_runs/YYYY-MM-DD.jsonl",
     "source": "ClinicalTrials.gov",
     "api_version": "2.x",
     "data_timestamp": "ISO-8601 timestamp",
+    "retrieved_at": "ISO-8601 timestamp",
     "records_retrieved": 4938,
     "records_used": 4648,
     "retrieval": {"requests": []},
-    "detail_retrieval": {"strategy": "on_demand"},
+    "detail_retrieval": {
+      "requested_count": 0,
+      "retrieved_count": 0,
+      "limit": 50,
+      "truncated": false,
+      "nct_ids": [],
+      "strategy": "on_demand"
+    },
     "agent_trace": []
   }
 }
@@ -435,7 +456,7 @@ ECharts is loaded from a pinned CDN version in `app/static/index.html`. The back
 
 ## Provenance and citations
 
-Each tabular datum or network edge can include source references:
+Each tabular datum, network node, and network edge includes source references:
 
 ```json
 {
@@ -443,11 +464,15 @@ Each tabular datum or network edge can include source references:
   "field_path": "protocolSection.designModule.phases",
   "value": "PHASE2",
   "source_url": "https://clinicaltrials.gov/study/NCT01234567",
-  "title": "Study title"
+  "title": "Study title",
+  "evidence": [
+    {"field_path": "protocolSection.armsInterventionsModule.interventions.name", "value": "Pembrolizumab"},
+    {"field_path": "protocolSection.designModule.phases", "value": "PHASE2"}
+  ]
 }
 ```
 
-`CITATION_LIMIT` limits references per datum, not the number of studies counted. A UI label such as “188 source studies” means 188 unique NCT references are attached across the visualization; it does not mean 188 detail API calls were made.
+Every datum also reports `source_count` and `citations_truncated`. `CITATION_LIMIT` bounds the embedded reference sample without changing the distinct-NCT calculation; `source_count` always reports the complete number of contributing records. Each embedded citation carries evidence for every grouping dimension represented by the datum. The UI explicitly labels these as attached citation samples; displaying them does not make detail API calls.
 
 ## Audit logging and monitoring
 
@@ -484,12 +509,13 @@ Show a sponsor-to-drug network for lung-cancer trials.
 Show a drug co-occurrence network for lung-cancer combination studies.
 Show intervention-type distribution for diabetes trials.
 Compare annual observational and interventional study counts.
-Show the full details for NCT01234567.
 ```
+
+Study-detail lookup is intentionally not a natural-language visualization query. Use `GET /v1/studies/{nct_id}` directly or select an NCT citation in User App.
 
 ## Actual example runs
 
-The repository includes three complete, unedited `response_output` objects captured from successful live runs on August 9, 2026. They satisfy the assignment requirement for 3–5 example queries with the actual JSON produced by the system. Because ClinicalTrials.gov is a live source, later runs may produce different counts.
+The repository includes three complete `response_output` objects based on successful live runs from August 9, 2026. Their plans, counts, NCT references, and retrieval metadata are unchanged; they were schema-migrated to include the current `evidence`, `source_count`, and `citations_truncated` fields. They satisfy the assignment requirement for 3–5 example queries with actual system output. Because ClinicalTrials.gov is a live source, later runs may produce different counts.
 
 | Query | Actual output |
 |---|---|
@@ -527,6 +553,17 @@ Run an optional live ClinicalTrials.gov smoke test:
 python3 scripts/smoke_test.py
 ```
 
+## Submission archive
+
+After committing the final version, create the requested ZIP entirely from tracked files:
+
+```bash
+mkdir -p dist
+git archive --format=zip --output=dist/cheiron-submission.zip HEAD
+```
+
+This excludes `.env`, logs, caches, `assignment_materials/`, and `dist/` itself through the repository boundary. The archive contains the application source, both README files, tests, and the three actual JSON example runs.
+
 ## Design decisions and trade-offs
 
 - **LLM for intent, code for facts:** reduces hallucination risk and makes calculations reproducible.
@@ -547,6 +584,7 @@ python3 scripts/smoke_test.py
 - Vendor or bundle ECharts instead of relying on a CDN for offline deployments.
 - Add maps, scatter plots, histograms, outcome-result statistics, age, sex, and eligibility dimensions.
 - Add authentication, rate limiting, and deployment configuration for production use.
+- Add a paginated provenance endpoint when consumers need every citation rather than the bounded embedded sample.
 
 ## AI-tool usage and integrity note
 

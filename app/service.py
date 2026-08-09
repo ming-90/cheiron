@@ -3,6 +3,8 @@
 from datetime import datetime, timezone
 from typing import Any, Dict, Optional
 
+from pydantic import BaseModel
+
 from app.analysis import aggregate
 from app.audit import AuditRun
 from app.clinicaltrials import ClinicalTrialsClient
@@ -118,7 +120,7 @@ class QueryService:
                     "agent_trace": trace,
                 },
             )
-            audit.set_response_output(response.dict())
+            audit.set_response_output(response.dict(exclude_none=True))
             audit.complete({
                 "records_retrieved": len(raw_studies),
                 "records_used": len(filtered),
@@ -142,7 +144,12 @@ def _result_size(result: Dict[str, Any]) -> int:
 
 def _remove_citations(value: Any) -> None:
     """Remove nested citation arrays in place when the caller opts out."""
-    if isinstance(value, list):
+    if isinstance(value, BaseModel):
+        if hasattr(value, "citations"):
+            value.citations = []
+        for item in value.__dict__.values():
+            _remove_citations(item)
+    elif isinstance(value, list):
         for item in value:
             _remove_citations(item)
     elif isinstance(value, dict):

@@ -1,5 +1,6 @@
 import asyncio
 import json
+from pathlib import Path
 from types import SimpleNamespace
 
 import httpx
@@ -10,7 +11,8 @@ from app.audit import AuditRun
 from app.clinicaltrials import ClinicalTrialsClient
 from app.analysis import aggregate
 from app.models import (
-    AnalysisPlan, AnalysisTask, AnalysisType, Dimension, Filters, QueryRequest,
+    AnalysisPlan, AnalysisTask, AnalysisType, Dimension, Filters, QueryRequest, QueryResponse,
+    Visualization,
 )
 from app.monitoring import dashboard_stats, get_run, list_runs
 from app.normalizer import apply_exact_filters, normalize_many
@@ -71,6 +73,15 @@ def test_normalize_filter_and_distinct_aggregation():
         ("Nivolumab", "PHASE3"): 1,
     }
     assert result["rows"][0]["citations"][0]["nct_id"].startswith("NCT")
+    evidence_paths = {
+        item["field_path"] for item in result["rows"][0]["citations"][0]["evidence"]
+    }
+    assert evidence_paths == {
+        "protocolSection.armsInterventionsModule.interventions.name",
+        "protocolSection.designModule.phases",
+    }
+    assert result["rows"][0]["source_count"] == result["rows"][0]["trial_count"]
+    assert result["rows"][0]["citations_truncated"] is False
 
 
 def test_comparison_normalizes_intervention_name_case_to_requested_name():
@@ -98,6 +109,14 @@ def test_network_uses_distinct_trials_as_edge_weight():
     edge = next(item for item in result["edges"] if item["source"] == "Sponsor A")
     assert edge["target"] == "Pembrolizumab"
     assert edge["weight"] == 2
+    assert len(edge["citations"][0]["evidence"]) == 2
+    sponsor_node = next(
+        item for item in result["nodes"]
+        if item["group"] == "sponsor" and item["id"] == "Sponsor A"
+    )
+    assert sponsor_node["trial_count"] == 2
+    assert sponsor_node["source_count"] == 2
+    assert sponsor_node["citations"][0]["evidence"][0]["value"] == "Sponsor A"
 
 
 class FakePlanner:
@@ -112,7 +131,10 @@ class FakePlanner:
 
 class FakeClinicalTrials:
     async def search(self, plan, audit=None):
-        return RAW, {"requests": [{"truncated": False, "retrieved_count": len(RAW)}]}
+        return RAW, {"requests": [{
+            "query_params": {}, "fields": [], "pages": 1,
+            "truncated": False, "retrieved_count": len(RAW), "total_count": len(RAW),
+        }]}
 
     async def get_version(self, audit=None):
         return {"apiVersion": "test", "dataTimestamp": "2026-01-01T00:00:00"}
@@ -156,6 +178,24 @@ def test_service_returns_renderable_json(tmp_path, monkeypatch):
     assert audit["result_summary"]["records_used"] == 3
     assert audit["response_output"]["query"] == "2018년 이후 연도별 추세"
     assert audit["response_output"]["visualizations"][0]["type"] == "time_series"
+
+
+def test_service_can_omit_embedded_citations_without_changing_source_count(
+    tmp_path, monkeypatch,
+):
+    import app.service as service_module
+
+    monkeypatch.setattr(service_module, "settings", SimpleNamespace(audit_log_dir=str(tmp_path)))
+    service = QueryService(
+        planner=FakePlanner(), clinical_trials=FakeClinicalTrials(),
+        visualization_builder=FakeVisualizationBuilder(),
+    )
+    result = asyncio.run(service.execute(QueryRequest(
+        query="2018년 이후 연도별 추세", include_citations=False,
+    )))
+    rows = result.dict(exclude_none=True)["visualizations"][0]["data"]
+    assert all(row["citations"] == [] for row in rows)
+    assert all(row["source_count"] == row["trial_count"] for row in rows)
 
 
 def test_planner_removes_unstated_years_and_unsupported_unknown_assumption():
@@ -325,4 +365,24 @@ def test_llm_visualization_selects_allowed_chart_without_changing_data():
     visualization = asyncio.run(builder.build("연도별 추세", task, result))
     assert visualization.type == "time_series"
     assert visualization.metadata["design_source"] == "llm"
-    assert visualization.data == result["rows"]
+    assert [item.dict(exclude_none=True) for item in visualization.data] == result["rows"]
+
+
+def test_visualization_contract_rejects_unknown_encoding_channels():
+    with pytest.raises(ValidationError):
+        Visualization.parse_obj({
+            "id": "invalid", "type": "bar_chart", "title": "Invalid",
+            "encoding": {"radius": {"field": "trial_count"}},
+            "data": [{
+                "phase": "PHASE2", "trial_count": 1, "source_count": 1,
+                "citations_truncated": False, "citations": [],
+            }],
+        })
+
+
+def test_checked_in_example_outputs_match_public_response_schema():
+    example_dir = Path(__file__).parents[1] / "examples"
+    paths = sorted(example_dir.glob("*.json"))
+    assert len(paths) == 3
+    for path in paths:
+        QueryResponse.parse_obj(json.loads(path.read_text(encoding="utf-8")))

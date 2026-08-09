@@ -69,7 +69,7 @@ async def monitoring_run(request_id: str):
     return run
 
 
-@app.post("/v1/query", response_model=QueryResponse)
+@app.post("/v1/query", response_model=QueryResponse, response_model_exclude_none=True)
 async def query(request: QueryRequest) -> QueryResponse:
     """Execute the query agent and translate expected failures to HTTP errors."""
     try:

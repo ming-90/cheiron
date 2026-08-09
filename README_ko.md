@@ -191,7 +191,7 @@ curl -X POST http://127.0.0.1:8000/v1/query \
 | `visualizations[].metadata` | object | 지표, 표시 힌트, 차트 후보, 설계 출처 |
 | `meta` | object | 요청 ID, 소스·버전 시각, 건수, 조회 정보, 상세 정책, 에이전트 추적 정보 |
 
-집계에는 `distinct_nct_id_count` 지표를 사용합니다. 모든 `encoding` 필드는 `data`에 실제 존재해야 하며 백엔드가 응답 전에 검증합니다.
+집계에는 `distinct_nct_id_count` 지표를 사용합니다. 모든 `encoding` 필드는 `data`에 실제 존재해야 하며 백엔드가 응답 전에 검증합니다. 생성되는 OpenAPI 스키마에는 제한 없는 데이터 객체 대신 `TabularDatum`, `NetworkDatum`, `NetworkNode`, `NetworkEdge`, `VisualizationEncoding`, `ResponseMetadata` 계약이 각각 정의됩니다.
 
 ```json
 {
@@ -234,13 +234,25 @@ curl -X POST http://127.0.0.1:8000/v1/query \
           "intervention": "Pembrolizumab",
           "phase": "PHASE2",
           "trial_count": 120,
+          "source_count": 120,
+          "citations_truncated": true,
           "citations": [
             {
               "nct_id": "NCT01234567",
               "field_path": "protocolSection.designModule.phases",
               "value": "PHASE2",
               "source_url": "https://clinicaltrials.gov/study/NCT01234567",
-              "title": "예시 연구"
+              "title": "예시 연구",
+              "evidence": [
+                {
+                  "field_path": "protocolSection.armsInterventionsModule.interventions.name",
+                  "value": "Pembrolizumab"
+                },
+                {
+                  "field_path": "protocolSection.designModule.phases",
+                  "value": "PHASE2"
+                }
+              ]
             }
           ]
         }
@@ -254,13 +266,22 @@ curl -X POST http://127.0.0.1:8000/v1/query \
   ],
   "meta": {
     "request_id": "uuid",
+    "audit_log": "logs/agent_runs/YYYY-MM-DD.jsonl",
     "source": "ClinicalTrials.gov",
     "api_version": "2.x",
     "data_timestamp": "ISO-8601 timestamp",
+    "retrieved_at": "ISO-8601 timestamp",
     "records_retrieved": 4938,
     "records_used": 4648,
     "retrieval": {"requests": []},
-    "detail_retrieval": {"strategy": "on_demand"},
+    "detail_retrieval": {
+      "requested_count": 0,
+      "retrieved_count": 0,
+      "limit": 50,
+      "truncated": false,
+      "nct_ids": [],
+      "strategy": "on_demand"
+    },
     "agent_trace": []
   }
 }
@@ -435,7 +456,7 @@ ECharts는 `app/static/index.html`에 고정된 CDN 버전으로 로드합니다
 
 ## 출처와 인용
 
-각 표 형식 datum 또는 네트워크 edge는 다음과 같은 원본 참조를 포함할 수 있습니다.
+각 표 형식 datum, 네트워크 node, 네트워크 edge에는 다음과 같은 원본 참조가 포함됩니다.
 
 ```json
 {
@@ -443,11 +464,15 @@ ECharts는 `app/static/index.html`에 고정된 CDN 버전으로 로드합니다
   "field_path": "protocolSection.designModule.phases",
   "value": "PHASE2",
   "source_url": "https://clinicaltrials.gov/study/NCT01234567",
-  "title": "연구 제목"
+  "title": "연구 제목",
+  "evidence": [
+    {"field_path": "protocolSection.armsInterventionsModule.interventions.name", "value": "Pembrolizumab"},
+    {"field_path": "protocolSection.designModule.phases", "value": "PHASE2"}
+  ]
 }
 ```
 
-`CITATION_LIMIT`는 데이터 포인트당 첨부하는 참조 수를 제한하며 집계에 포함되는 연구 수를 제한하지 않습니다. 화면의 “원본 연구 188개”는 시각화 전체에 연결된 고유 NCT 참조가 188개라는 의미이며 상세 API를 188번 호출했다는 의미가 아닙니다.
+각 datum은 `source_count`와 `citations_truncated`도 제공합니다. `CITATION_LIMIT`는 고유 NCT 계산을 바꾸지 않고 응답에 직접 포함되는 참조 표본만 제한하며, `source_count`는 기여한 전체 연구 수를 나타냅니다. 포함된 각 citation은 datum의 모든 그룹 차원을 뒷받침하는 evidence를 가집니다. 화면에서도 이를 첨부된 citation 표본이라고 명확히 표시하며 목록을 펼치는 동작은 상세 API를 호출하지 않습니다.
 
 ## 감사 로그와 모니터링
 
@@ -484,12 +509,13 @@ Pembrolizumab과 Nivolumab 임상시험 단계를 비교해줘.
 폐암 병용요법에서 함께 사용되는 약물 네트워크를 보여줘.
 당뇨병 임상시험의 중재 유형 분포를 보여줘.
 관찰연구와 중재연구의 연도별 건수를 비교해줘.
-NCT01234567 연구의 상세 정보를 보여줘.
 ```
+
+연구 상세 조회는 자연어 시각화 질문으로 처리하지 않습니다. `GET /v1/studies/{nct_id}`를 직접 호출하거나 User App에서 NCT citation을 선택합니다.
 
 ## 실제 실행 예시
 
-저장소에는 2026년 8월 9일 성공한 실시간 실행에서 저장한 완전한 `response_output` 객체 3개가 포함되어 있습니다. 이는 과제의 “3–5개 예시 질문과 시스템이 실제 생성한 JSON 출력” 요구사항을 충족합니다. ClinicalTrials.gov는 실시간 데이터 소스이므로 이후 실행에서는 집계값이 달라질 수 있습니다.
+저장소에는 2026년 8월 9일 성공한 실시간 실행을 기반으로 한 완전한 `response_output` 객체 3개가 포함되어 있습니다. 계획, 집계값, NCT 참조, 조회 메타데이터는 그대로이며 현재 계약의 `evidence`, `source_count`, `citations_truncated` 필드를 추가하는 스키마 마이그레이션만 적용했습니다. 이는 과제의 “3–5개 예시 질문과 시스템이 실제 생성한 JSON 출력” 요구사항을 충족합니다. ClinicalTrials.gov는 실시간 데이터 소스이므로 이후 실행에서는 집계값이 달라질 수 있습니다.
 
 | 질문 | 실제 출력 |
 |---|---|
@@ -527,6 +553,17 @@ pytest -q
 python3 scripts/smoke_test.py
 ```
 
+## 제출용 압축 파일
+
+최종 버전을 커밋한 후 추적 중인 파일만으로 과제 제출용 ZIP을 생성합니다.
+
+```bash
+mkdir -p dist
+git archive --format=zip --output=dist/cheiron-submission.zip HEAD
+```
+
+저장소 경계를 사용하므로 `.env`, 로그, 캐시, `assignment_materials/`, `dist/` 자체는 포함되지 않습니다. 압축 파일에는 애플리케이션 소스, 영문·한글 README, 테스트, 실제 JSON 실행 예시 3개가 포함됩니다.
+
 ## 주요 설계 결정과 트레이드오프
 
 - **LLM은 의도를, 코드는 사실을 담당:** 환각 위험을 낮추고 계산을 재현할 수 있습니다.
@@ -547,6 +584,7 @@ python3 scripts/smoke_test.py
 - 오프라인 배포를 위해 CDN 대신 ECharts 번들링
 - 지도, 산점도, 히스토그램, 결과 통계, 연령, 성별, 선정 기준 차원 추가
 - 운영용 인증, rate limiting 및 배포 설정 추가
+- 내장 표본을 넘어 모든 citation이 필요할 때 사용할 페이지형 provenance endpoint 추가
 
 ## AI 도구 사용 및 무결성 설명
 

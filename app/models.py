@@ -1,5 +1,5 @@
 from enum import Enum
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, List, Optional, Union
 
 from pydantic import BaseModel, Field, root_validator, validator
 
@@ -177,6 +177,135 @@ class Citation(StrictModel):
     field_path: str
     value: Any
     source_url: str
+    title: Optional[str] = None
+    evidence: List["CitationEvidence"] = Field(default_factory=list)
+
+
+class CitationEvidence(StrictModel):
+    """One exact ClinicalTrials.gov field/value supporting a grouped datum."""
+    field_path: str
+    value: Any
+
+
+class TabularDatum(StrictModel):
+    """One supported tabular aggregate row."""
+    year: Optional[int] = None
+    phase: Optional[str] = None
+    status: Optional[str] = None
+    intervention: Optional[str] = None
+    intervention_type: Optional[str] = None
+    sponsor: Optional[str] = None
+    sponsor_class: Optional[str] = None
+    country: Optional[str] = None
+    trial_count: int = Field(..., ge=0)
+    citations: List[Citation] = Field(default_factory=list)
+    source_count: int = Field(..., ge=0)
+    citations_truncated: bool = False
+
+
+class NetworkNode(StrictModel):
+    """One network entity whose size represents a distinct-NCT count."""
+    id: str
+    group: str
+    trial_count: int = Field(..., ge=0)
+    citations: List[Citation] = Field(default_factory=list)
+    source_count: int = Field(..., ge=0)
+    citations_truncated: bool = False
+
+
+class NetworkEdge(StrictModel):
+    """One weighted relationship backed by distinct source studies."""
+    source: str
+    target: str
+    weight: int = Field(..., ge=1)
+    citations: List[Citation] = Field(default_factory=list)
+    source_count: int = Field(..., ge=0)
+    citations_truncated: bool = False
+
+
+class NetworkDatum(StrictModel):
+    """Complete node/edge payload for a network visualization."""
+    nodes: List[NetworkNode]
+    edges: List[NetworkEdge]
+
+
+class EncodingField(StrictModel):
+    """Field-to-channel mapping understood by the frontend adapter."""
+    field: str
+    type: Optional[str] = None
+    aggregate: Any = None
+    sort: Any = None
+    title: Optional[str] = None
+    format: Optional[str] = None
+    axis: Optional[Dict[str, Any]] = None
+    legend: Optional[Dict[str, Any]] = None
+
+
+class NetworkNodeEncoding(StrictModel):
+    """Network node field mappings."""
+    id: str
+    group: str
+    size: str
+
+
+class NetworkEdgeEncoding(StrictModel):
+    """Network edge field mappings."""
+    source: str
+    target: str
+    weight: str
+
+
+class MarkEncoding(StrictModel):
+    """Optional renderer-neutral mark hints returned by the designer."""
+    type: Optional[str] = None
+    grouping: Optional[str] = None
+
+
+class VisualizationEncoding(StrictModel):
+    """Supported visual channels for tabular and network charts."""
+    x: Optional[EncodingField] = None
+    y: Optional[EncodingField] = None
+    series: Optional[EncodingField] = None
+    color: Optional[EncodingField] = None
+    text: Optional[EncodingField] = None
+    tooltip: List[EncodingField] = Field(default_factory=list)
+    nodes: Optional[NetworkNodeEncoding] = None
+    edges: Optional[NetworkEdgeEncoding] = None
+    mark: Optional[Union[str, MarkEncoding]] = None
+    orientation: Optional[str] = None
+
+
+class VisualizationMetadata(BaseModel):
+    """Documented metadata plus safe designer-specific display hints."""
+    metric: str = "distinct_nct_id_count"
+    design_source: Optional[str] = None
+    candidate_chart_types: List[str] = Field(default_factory=list)
+    citation_policy: Optional[str] = None
+    minimum_weight: Optional[int] = None
+    unit: Optional[str] = None
+    sort_order: Optional[str] = None
+    description: Optional[str] = None
+    note: Optional[str] = None
+
+    class Config:
+        extra = "allow"
+
+    def get(self, key: str, default: Any = None) -> Any:
+        """Provide the small mapping interface used by orchestration code."""
+        return getattr(self, key, default)
+
+    def update(self, values: Dict[str, Any]) -> None:
+        """Apply validated or designer-specific metadata values in place."""
+        for key, value in values.items():
+            setattr(self, key, value)
+
+    def __getitem__(self, key: str) -> Any:
+        """Read metadata with dictionary syntax for backward compatibility."""
+        return getattr(self, key)
+
+    def __setitem__(self, key: str, value: Any) -> None:
+        """Set metadata with dictionary syntax for injected test builders."""
+        setattr(self, key, value)
 
 
 class Visualization(StrictModel):
@@ -184,9 +313,9 @@ class Visualization(StrictModel):
     id: str
     type: str
     title: str
-    encoding: Dict[str, Any]
-    data: List[Dict[str, Any]]
-    metadata: Dict[str, Any] = Field(default_factory=dict)
+    encoding: VisualizationEncoding
+    data: Union[List[TabularDatum], List[NetworkDatum]]
+    metadata: VisualizationMetadata = Field(default_factory=VisualizationMetadata)
 
 
 class VisualizationDesign(StrictModel):
@@ -205,7 +334,57 @@ class QueryResponse(StrictModel):
     query: str
     plan: AnalysisPlan
     visualizations: List[Visualization]
-    meta: Dict[str, Any]
+    meta: "ResponseMetadata"
+
+
+class RetrievalRequestMetadata(StrictModel):
+    """Summary of one compiled paginated ClinicalTrials.gov search."""
+    query_params: Dict[str, Any]
+    fields: List[str]
+    pages: int = Field(..., ge=0)
+    retrieved_count: int = Field(..., ge=0)
+    total_count: Optional[int] = Field(None, ge=0)
+    truncated: bool
+
+
+class RetrievalMetadata(StrictModel):
+    """All search requests used for one query."""
+    requests: List[RetrievalRequestMetadata]
+
+
+class DetailRetrievalMetadata(StrictModel):
+    """Explicit detail-fetch policy and counters."""
+    requested_count: int = Field(..., ge=0)
+    retrieved_count: int = Field(..., ge=0)
+    limit: int = Field(..., ge=1)
+    truncated: bool
+    nct_ids: List[str]
+    strategy: str
+
+
+class AgentTraceEvent(BaseModel):
+    """One ordered, extensible pipeline trace event."""
+    step: int = Field(..., ge=1)
+    action: str
+    status: str
+
+    class Config:
+        extra = "allow"
+
+
+class ResponseMetadata(StrictModel):
+    """Frontend- and audit-relevant metadata returned with every query."""
+    request_id: str
+    audit_log: str
+    source: str
+    api_version: Optional[str] = None
+    data_timestamp: Optional[str] = None
+    retrieved_at: str
+    records_retrieved: int = Field(..., ge=0)
+    records_used: int = Field(..., ge=0)
+    retrieval: RetrievalMetadata
+    detail_retrieval: DetailRetrievalMetadata
+    agent_trace: List[AgentTraceEvent]
 
 
 class NormalizedStudy(StrictModel):
@@ -224,4 +403,8 @@ class NormalizedStudy(StrictModel):
     sponsor_class: Optional[str] = None
     countries: List[str] = Field(default_factory=list)
     raw: Dict[str, Any] = Field(default_factory=dict, exclude=True)
+
+
+Citation.update_forward_refs(CitationEvidence=CitationEvidence)
+QueryResponse.update_forward_refs(ResponseMetadata=ResponseMetadata)
 """Strict request, plan, study, citation, and visualization data contracts."""

@@ -68,7 +68,11 @@ def aggregate(
     for key, nct_ids in buckets.items():
         row = {dimension.value: value for dimension, value in zip(task.group_by, key)}
         row["trial_count"] = len(nct_ids)
-        row["citations"] = _citations(nct_ids, task.group_by, row, study_lookup)
+        row.update(_citation_bundle(
+            nct_ids,
+            [(dimension, row[dimension.value]) for dimension in task.group_by],
+            study_lookup,
+        ))
         rows.append(row)
 
     rows.sort(key=lambda row: _sort_key(row, task))
@@ -139,9 +143,10 @@ def _aggregate_network(
             "source": source,
             "target": target,
             "weight": len(nct_ids),
-            "citations": _citations(
-                nct_ids, [source_dimension, target_dimension],
-                {source_dimension.value: source, target_dimension.value: target}, lookup,
+            **_citation_bundle(
+                nct_ids,
+                [(source_dimension, source), (target_dimension, target)],
+                lookup,
             ),
         })
     edge_rows.sort(key=lambda edge: (-edge["weight"], edge["source"], edge["target"]))
@@ -149,29 +154,45 @@ def _aggregate_network(
         edge_rows = edge_rows[: task.limit]
 
     included = {edge["source"] for edge in edge_rows} | {edge["target"] for edge in edge_rows}
-    nodes = [
-        {"id": value, "group": dimension, "trial_count": len(nct_ids)}
-        for (dimension, value), nct_ids in node_trials.items() if value in included
-    ]
+    nodes = []
+    for (dimension, value), nct_ids in node_trials.items():
+        if value not in included:
+            continue
+        nodes.append({
+            "id": value,
+            "group": dimension,
+            "trial_count": len(nct_ids),
+            **_citation_bundle(nct_ids, [(Dimension(dimension), value)], lookup),
+        })
     nodes.sort(key=lambda node: (node["group"], node["id"]))
     return {"kind": "network", "nodes": nodes, "edges": edge_rows}
 
 
-def _citations(
-    nct_ids: Iterable[str], dimensions: Sequence[Dimension], row: Dict[str, Any],
+def _citation_bundle(
+    nct_ids: Iterable[str], evidence_items: Sequence[Tuple[Dimension, Any]],
     lookup: Dict[str, NormalizedStudy],
-) -> List[Dict[str, Any]]:
-    """Attach a bounded, deterministic set of source studies to one datum."""
+) -> Dict[str, Any]:
+    """Attach bounded citations plus explicit coverage metadata to one datum."""
+    ordered_ids = sorted(set(nct_ids))
+    evidence = [
+        {"field_path": FIELD_PATHS[dimension], "value": value}
+        for dimension, value in evidence_items
+    ]
+    primary = evidence[-1]
     citations = []
-    primary_dimension = dimensions[-1]
-    value = row.get(primary_dimension.value)
-    for nct_id in sorted(nct_ids)[: settings.citation_limit]:
+    for nct_id in ordered_ids[: settings.citation_limit]:
         citations.append({
             "nct_id": nct_id,
-            "field_path": FIELD_PATHS[primary_dimension],
-            "value": value,
+            # Retain the original primary field/value for older frontends.
+            "field_path": primary["field_path"],
+            "value": primary["value"],
             "source_url": f"https://clinicaltrials.gov/study/{nct_id}",
             "title": lookup[nct_id].title,
+            "evidence": evidence,
         })
-    return citations
+    return {
+        "citations": citations,
+        "source_count": len(ordered_ids),
+        "citations_truncated": len(ordered_ids) > len(citations),
+    }
 """Deterministic aggregations over normalized ClinicalTrials.gov studies."""

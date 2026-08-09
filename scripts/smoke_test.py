@@ -2,6 +2,15 @@
 
 import asyncio
 import json
+import sys
+from pathlib import Path
+
+
+# Support the documented `python3 scripts/smoke_test.py` invocation by making
+# the repository root importable when Python starts from the scripts directory.
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+if str(PROJECT_ROOT) not in sys.path:
+    sys.path.insert(0, str(PROJECT_ROOT))
 
 from app.analysis import aggregate
 from app.clinicaltrials import ClinicalTrialsClient
@@ -32,7 +41,7 @@ async def main() -> None:
             "records_retrieved": len(raw),
             "records_used": len(studies),
             "retrieval": retrieval,
-            "visualization": visualization.dict(),
+            "visualization": visualization.dict(exclude_none=True),
         }, ensure_ascii=False, indent=2))
     finally:
         await client.close()
@@ -40,4 +49,3 @@ async def main() -> None:
 
 if __name__ == "__main__":
     asyncio.run(main())
-

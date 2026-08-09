@@ -283,11 +283,12 @@ function renderQueryResult(payload) {
 function renderVisualization(visualization) {
   const source = visualization.metadata?.design_source || "unknown";
   const citations = collectCitations(visualization.data);
+  const citationsTruncated = hasTruncatedCitations(visualization.data);
   const chartId = `chart-${String(visualization.id).replace(/[^a-zA-Z0-9_-]/g, "-")}`;
   return `<article class="visualization-card ${visualization.type === "network_graph" ? "network-card" : ""}">
     <header><div><span class="chart-type">${escapeHtml(visualization.type)}</span><h3>${escapeHtml(visualization.title)}</h3></div><span class="design-chip">${source === "llm" ? "AI selected" : "Rule selected"}</span></header>
     <div class="chart-surface"><div id="${chartId}" class="echarts-chart" role="img" aria-label="${escapeHtml(visualization.title)}"></div></div>
-    ${citations.length ? `<details class="chart-citations"><summary>원본 연구 ${citations.length}개 보기</summary><div>${citations.slice(0, 30).map((item) => `<button type="button" data-study-id="${escapeHtml(item.nct_id)}"><b>${escapeHtml(item.nct_id)}</b><span>${escapeHtml(item.title || item.value || "연구 상세")}</span></button>`).join("")}</div></details>` : ""}
+    ${citations.length ? `<details class="chart-citations"><summary>첨부된 원본 인용 ${citations.length}개 보기${citationsTruncated ? " · 전체 기여 연구 중 표본" : ""}</summary><div>${citations.slice(0, 30).map((item) => `<button type="button" data-study-id="${escapeHtml(item.nct_id)}"><b>${escapeHtml(item.nct_id)}</b><span>${escapeHtml(item.title || item.value || "연구 상세")}</span></button>`).join("")}</div></details>` : ""}
   </article>`;
 }
 
@@ -552,6 +553,16 @@ function collectCitations(data) {
   };
   visit(data);
   return [...found.values()];
+}
+
+/** Report whether any datum embeds fewer citations than its full source count. */
+function hasTruncatedCitations(data) {
+  if (Array.isArray(data)) return data.some(hasTruncatedCitations);
+  if (data && typeof data === "object") {
+    if (data.citations_truncated) return true;
+    return Object.values(data).some(hasTruncatedCitations);
+  }
+  return false;
 }
 
 /** Fetch and display the full record for a citation selected by the user. */
